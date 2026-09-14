@@ -144,22 +144,26 @@ One rule across all three lists, so it reads as considered rather than inconsist
 If Sonny's want the list reproduced exactly as printed — all lowercase, shouty brands
 and all — it's a find-and-replace, but the page will look less deliberate.
 
-## THE VISIT UNDERLAY
+## THE VISIT SECTION HAS NO BACKGROUND IMAGE
 
-The exterior shot now sits behind the whole Visit section instead of below it.
-The underlay is now the **blue sign on the stone wall**, self-hosted, and it was tuned
-against the real file rather than blind. The image is cropped so the sign lands about
-72% down the frame, which puts it in the clean band below the copy — the section reads
-as: here's where we are, and here's the sign you're looking for.
+It was tried twice: the exterior shot (too dark and too low-res to read), then the blue
+sign on the stone (looked good in isolation, didn't work in place). Both are out. The
+section is now plain ink, which is the more restrained answer anyway and removes the
+whole text-over-photograph contrast problem.
 
-The scrim is shaped around the text rather than applied evenly: solid through the
-heading and the three columns, then it opens right up underneath. Measured against the
-actual photograph, every one of the 28 text elements in that section clears 4.5:1, and
-nothing in the section runs below 70% opacity for that reason.
+The signage photograph is still worth using, just not there. It's the strongest
+single image Sonny's have for **Google Business Profile, Instagram and the social share
+card** — it's the "you have arrived" shot. Say the word and I'll swap it in as the
+Open Graph image in place of the hero.
 
-If the crop ever needs moving, it's one number: `object-position: center 62%`.
-The old 1366×768 exterior shot is no longer used anywhere — it was the weakest asset
-on the site.
+## TYPOGRAPHY RULES
+
+- **No em dashes anywhere.** Full stops, commas or colons instead. Checked: zero in the file.
+- **En dashes stay in ranges only** (`Mon – Tue`, `4pm – 10pm`), which is correct typography.
+- **Menu items are capitalised at the start of every slash-separated part**:
+  *Grilled market fish / Roast chicken butter / Goolwa pipis*. Proper nouns keep their
+  capitals wherever they fall. Drinks descriptions start with a capital.
+- **Drinks brands are Title Case, never caps-lock**: Capi, StrangeLove. XPA stays capitalised.
 
 ## CTA SHAPE
 
