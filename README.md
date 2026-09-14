@@ -41,6 +41,25 @@ Not on the page because they weren't in the photos: red wine, dessert wine, spir
 and whatever the oyster `6 / 30 / 55` and cheese `16 / 30 / 40` tiers actually mean
 (1/6/12? one/three/five?). Worth labelling those on the site once you know.
 
+## THIS IS A MOCKUP BUILT FROM FOUND MATERIAL
+
+Everything on the page came from Sonny's own site, their printed menus, press coverage
+and the photographs you supplied. Nothing came from Sonny's directly. Before this is
+shown as anything other than a pitch, every line needs their yes.
+
+Already removed on that basis: the wine paragraph ("mostly small growers, plenty of it
+from WA") and its matching schema entry. It was my reading of one photographed page,
+not something Sonny's have ever said. There is now no wine claim on the page.
+
+**Still standing on the same footing, and worth a second look:**
+
+- *"So is the wine list. Margaret River on one page, Naoussa on the next."* in The bar.
+  Both wines are on the list you photographed, so it is defensible, but it is still me
+  describing their list for them. Easy cut if you'd rather nothing.
+- *"A small bar in Mount Hawthorn with a very good kitchen."* is a judgement, not a fact.
+  It sits above a real award, which earns it, but it is still an opinion in their voice.
+- The weekly menu line assumes the weekly arrangement exists. It does not yet.
+
 ## CONFIRM BEFORE LAUNCH
 
 These came from third-party sources (WA Good Food Guide, Broadsheet), not from the
@@ -144,17 +163,23 @@ One rule across all three lists, so it reads as considered rather than inconsist
 If Sonny's want the list reproduced exactly as printed — all lowercase, shouty brands
 and all — it's a find-and-replace, but the page will look less deliberate.
 
-## THE VISIT SECTION HAS NO BACKGROUND IMAGE
+## THE VISIT PHOTO
 
-It was tried twice: the exterior shot (too dark and too low-res to read), then the blue
-sign on the stone (looked good in isolation, didn't work in place). Both are out. The
-section is now plain ink, which is the more restrained answer anyway and removes the
-whole text-over-photograph contrast problem.
+The exterior shot is back in the Visit section as a **full-width image**, sitting
+between the address/hours/contact columns and the Book a table row. As a background
+underlay it never worked (both that photo and the blue sign were tried and pulled);
+as a straight image it does its job, which is showing people the door they're
+looking for.
 
-The signage photograph is still worth using, just not there. It's the strongest
-single image Sonny's have for **Google Business Profile, Instagram and the social share
-card** — it's the "you have arrived" shot. Say the word and I'll swap it in as the
-Open Graph image in place of the hero.
+**It is only 1366x768.** Across a full-width 2:1 band that is roughly 1x on a normal
+screen and soft on a retina one. It is the weakest asset on the site and a reshoot of
+the frontage is the real fix. A dusk frame would suit this site far better than the
+bright daylight one they have.
+
+The blue sign on the stone is still the strongest single image Sonny's own. It belongs
+on their **Google Business Profile and as the social share card** rather than on the
+page. Say the word and I'll make it the Open Graph image in place of the hero. The
+derivatives are in `_unused/` if you want them.
 
 ## TYPOGRAPHY RULES
 
