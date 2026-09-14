@@ -72,6 +72,7 @@
   --gut:clamp(20px,5.2vw,72px);
   --max:1320px;
   --sect:clamp(84px,11vw,164px);
+  --sect-end:clamp(64px,8vw,120px);
 
   --sans:"Anybody","Helvetica Neue",Helvetica,Arial,sans-serif;
   --serif:"Anybody","Helvetica Neue",Helvetica,Arial,sans-serif; /* one family, two registers */
@@ -126,8 +127,7 @@ ul{margin:0;padding:0;list-style:none}
 .nav__links a{font-size:13px;letter-spacing:.05em;color:var(--bone-70);transition:color .25s var(--ease);padding:14px 2px}
 .nav__links a:hover{color:var(--blue-bright)}
 .nav__links{display:flex;gap:clamp(14px,2.4vw,32px)}
-.nav__links a.opt{display:none}
-@media(min-width:720px){.nav__links a.opt{display:inline}}
+
 
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:.6em;
@@ -138,9 +138,11 @@ ul{margin:0;padding:0;list-style:none}
   white-space:nowrap;
 }
 .btn:hover{background:var(--blue-lift);border-color:var(--blue-lift)}
-.btn--ghost{background:rgba(14,15,18,.34);color:var(--bone);border-color:rgba(237,232,223,.42);
-  backdrop-filter:blur(7px) saturate(130%);-webkit-backdrop-filter:blur(7px) saturate(130%)}
-.btn--ghost:hover{background:var(--blue);color:var(--bone);border-color:var(--blue);backdrop-filter:none;-webkit-backdrop-filter:none}
+/* The second action is a route, not a decision. It reads as a link, not a second pill. */
+.tlink{display:inline-flex;align-items:center;min-height:44px;font-size:14.5px;letter-spacing:.01em;
+  color:var(--bone);border-bottom:1px solid var(--rule-2);
+  transition:border-color .3s var(--ease),color .3s var(--ease)}
+.tlink:hover{border-bottom-color:var(--bone)}
 .btn--sm{min-height:44px;padding:11px 22px;font-size:12px}
 
 /* ---------- hero ---------- */
@@ -157,6 +159,8 @@ ul{margin:0;padding:0;list-style:none}
     linear-gradient(to bottom,rgba(14,15,18,.76) 0%,rgba(14,15,18,.56) 28%,rgba(14,15,18,.18) 52%,rgba(14,15,18,.16) 68%,rgba(14,15,18,.62) 88%,rgba(14,15,18,.93) 100%);
 }
 @media(max-width:760px){
+  /* Let the next section show at the bottom of a phone screen. */
+  .hero{min-height:88svh}
   .hero::after{
     background:
       radial-gradient(ellipse 108% 34% at 50% 42%,rgba(14,15,18,.66) 0%,rgba(14,15,18,.26) 72%,rgba(14,15,18,0) 100%),
@@ -171,53 +175,29 @@ h1{display:flex;flex-direction:column;align-items:center;gap:clamp(20px,2.8vw,28
   font-size:clamp(1.2rem,2.7vw,1.95rem);line-height:1.24;letter-spacing:-.018em;
   max-width:30ch;text-wrap:balance;
 }
-.hero__line .brk{display:none}
-@media(min-width:620px){.hero__line .brk{display:inline}}
-.hero__cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:clamp(30px,4.4vw,42px)}
+.hero__cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 30px;justify-content:center;margin-top:clamp(30px,4.4vw,42px)}
 .hero__meta{display:flex;flex-wrap:wrap;justify-content:center;
   align-items:center;gap:6px 14px;font-size:13.5px;color:var(--bone-70)}
 .hero__sep{color:var(--bone-52)}
 @media(max-width:600px){.hero__meta{flex-direction:column;gap:7px}.hero__sep{display:none}}
 .hero__rail{position:absolute;left:0;right:0;bottom:clamp(22px,3.6vh,38px);padding-inline:var(--gut);
   text-align:center;display:flex;flex-direction:column;align-items:center;gap:9px}
-.hero__rail .label{color:var(--bone-70)}
+.hero__award{font-size:13px;line-height:1.5;letter-spacing:.005em;color:var(--bone-70)}
 .status{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;color:var(--bone)}
 .status__dot{width:6px;height:6px;border-radius:50%;background:var(--bone-52);flex:none}
 .status[data-open="true"] .status__dot{background:var(--blue-bright);box-shadow:0 0 0 3px rgba(46,121,255,.22)}
 
 /* ---------- generic section ---------- */
 .sect{padding-block:var(--sect)}
-.sect--bg{position:relative;isolation:isolate;overflow:hidden;padding-bottom:clamp(120px,15vw,210px)}
-.sect__bg{position:absolute;inset:0;z-index:-2}
-.sect__bg img{width:100%;height:100%;object-fit:cover;object-position:center 46%}
-/* A phone column is several times taller than this photograph, so covering the whole
-   section just zooms into nothing. It sits behind the top of the section instead, under
-   the heading, and fades out before the columns start. */
-@media(max-width:700px){
-  .sect--bg{padding-top:clamp(64px,16vw,96px)}
-  .sect__bg{inset:0 0 auto 0;height:min(88vw,370px);
-    -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 58%,transparent 100%);
-    mask-image:linear-gradient(to bottom,#000 0,#000 58%,transparent 100%)}
-  .sect__bg img{object-position:center 54%;filter:brightness(1.3) saturate(1.1)}
-  .sect--bg::before{
-    background:linear-gradient(to bottom,
-      rgba(14,15,18,.42) 0%,
-      rgba(14,15,18,.38) calc(min(88vw,370px) - 170px),
-      rgba(14,15,18,.55) min(88vw,370px),
-      var(--ink) calc(min(88vw,370px) + 40px),
-      var(--ink) 100%)}
-}
-}
-}
-.sect--bg::before{
-  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:linear-gradient(to bottom,var(--ink) 0%,rgba(14,15,18,0) 14%,
-             rgba(14,15,18,0) 82%,rgba(14,15,18,.72) 95%,var(--ink) 100%);
-}
-/* Type sits on a photograph here, so nothing runs below 70% opacity. */
-.sect--bg .label,.sect--bg .vsmall,.sect--bg .hours dt{color:var(--bone-70)}
-.sect--bg .klist li::before{background:rgba(237,232,223,.5)}
-.sect--bg .vcol h3{border-bottom-color:rgba(237,232,223,.3)}
+.sect--tight{padding-top:clamp(54px,7vw,104px)}
+.sect--bar{padding-bottom:clamp(52px,6.5vw,96px)}
+/* The exterior is wayfinding, not atmosphere. It keeps its own aspect ratio and its own
+   exposure, and it sits directly under the instruction to look for the blue sign. */
+.exterior{width:100vw;margin-inline:calc(50% - 50vw);
+  margin-block:clamp(26px,3.4vw,40px) clamp(38px,5vw,60px)}
+.exterior .ph{aspect-ratio:466/642}
+@media(min-width:700px){.exterior .ph{aspect-ratio:1920/655}}
+
 .sect--band{background:var(--ink-2)}
 .sect__head{margin-bottom:clamp(34px,5vw,58px)}
 h2{
@@ -238,9 +218,11 @@ h2{
 }
 .plates{display:grid;gap:18px}
 .plates figure:first-child .ph{aspect-ratio:4/5 !important}
+.plates figure:last-child{width:70%;margin-left:auto}
+.plates figure:last-child .ph{aspect-ratio:4/5 !important}
 @media(min-width:620px){
-  .plates{grid-template-columns:1.14fr .86fr;gap:clamp(18px,2.6vw,30px);align-items:start}
-  .plates figure:last-child{margin-top:clamp(48px,9vw,132px)}
+  .plates{grid-template-columns:1.18fr .82fr;gap:clamp(18px,2.6vw,30px);align-items:start}
+  .plates figure:last-child{width:auto;margin-left:0;margin-top:clamp(48px,9vw,132px)}
 }
 figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--bone-52)}
 .ph{overflow:hidden;background:#101216}
@@ -248,10 +230,17 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
 
 /* ---------- menu ---------- */
 .menu__grid{display:grid;gap:clamp(40px,6vw,72px)}
-@media(min-width:1020px){.menu__grid{grid-template-columns:minmax(0,1.55fr) minmax(0,.72fr);gap:clamp(44px,5vw,88px);align-items:start}}
-.menu__fire{margin-top:clamp(38px,6vw,52px)}
-.menu__fire .ph{aspect-ratio:3/2 !important}
-@media(min-width:1020px){.menu__fire{margin-top:0;position:sticky;top:150px}.menu__fire .ph{aspect-ratio:1125/2000 !important}}
+@media(min-width:1020px){.menu__grid{grid-template-columns:minmax(0,1.5fr) minmax(0,.8fr);gap:clamp(44px,5vw,88px);align-items:stretch}}
+.menu__ph{margin-top:clamp(32px,4.6vw,46px)}
+.wine{margin-top:clamp(40px,5.5vw,64px);padding-top:17px;border-top:1px solid var(--rule)}
+.wine p{margin-top:16px;font-size:15px;line-height:1.68;color:var(--bone-70);max-width:56ch}
+/* On a wide screen the side column carries the wine at the top and drops the dessert
+   photograph level with the dessert rows in the list beside it. */
+@media(min-width:1020px){
+  .menu__side{display:flex;flex-direction:column;justify-content:space-between;height:100%}
+  .menu__side .wine{order:-1;margin-top:0;padding-top:0;border-top:none}
+  .menu__ph{margin-top:clamp(48px,6vw,80px)}
+}
 
 .mlist{border-top:1px solid var(--rule)}
 .mrow{
@@ -265,12 +254,12 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
   color:var(--bone);
 }
 .mrow__price{font-size:13.5px;letter-spacing:.04em;color:var(--bone-70);white-space:nowrap;font-variant-numeric:tabular-nums}
-.mset{margin-top:30px;padding:20px 26px;border:1px solid var(--rule-2);border-radius:var(--radius);
-  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 20px}
-.mset b{font-weight:500;font-stretch:104%;font-size:1.05rem;color:var(--bone)}
-.mset span{font-size:13.5px;color:var(--bone-70);font-variant-numeric:tabular-nums}
-.mgroup{margin-top:clamp(52px,7vw,84px)}
-.mgroup > .label{margin-bottom:20px}
+.mset{margin-top:clamp(24px,3vw,32px);padding-top:18px;border-top:1px solid var(--rule-2);
+  display:grid;grid-template-columns:1fr auto;gap:4px 24px;align-items:baseline}
+.mset b{font-family:var(--serif);font-weight:500;font-stretch:104%;
+  font-size:clamp(1.02rem,1.6vw,1.18rem);letter-spacing:-.01em;color:var(--bone)}
+.mset span{font-size:13.5px;letter-spacing:.04em;color:var(--bone-70);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
 .dlist{display:grid;gap:0 clamp(32px,4.5vw,72px);border-top:1px solid var(--rule)}
 @media(min-width:760px){.dlist{grid-template-columns:1fr 1fr}}
 .drow{padding:15px 0;border-bottom:1px solid var(--rule)}
@@ -279,18 +268,15 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
 .drow h3 span{font-size:13.5px;color:var(--bone-70);font-variant-numeric:tabular-nums;font-weight:400;white-space:nowrap}
 .drow p{margin-top:3px;font-size:14px;line-height:1.5;color:var(--bone-52);max-width:46ch}
 .tail{display:grid;gap:clamp(34px,4vw,54px);margin-top:clamp(48px,6vw,76px)}
-@media(min-width:680px){.tail{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:620px){.tail{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .tail h3{font-size:11px;font-weight:600;font-stretch:94%;letter-spacing:.19em;text-transform:uppercase;
   color:var(--bone-52);padding-bottom:14px;border-bottom:1px solid var(--rule);margin-bottom:16px}
 .tail li{display:flex;justify-content:space-between;gap:14px;font-size:14.5px;line-height:1.6;
   color:var(--bone-70);padding:4px 0}
 .tail li span{color:var(--bone-52);font-variant-numeric:tabular-nums;white-space:nowrap}
 .tail p{font-size:14.5px;line-height:1.62;color:var(--bone-70)}
-.mrow__desc{grid-column:1/-1;max-width:52ch;color:var(--bone-70);font-size:15px;line-height:1.62;margin-top:6px}
 .mnote{margin-top:clamp(30px,4vw,44px);display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px}
 .mnote p{font-size:14.5px;color:var(--bone-52);max-width:44ch}
-.ilink{display:inline-block;font-size:13px;letter-spacing:.05em;border-bottom:1px solid var(--rule-2);padding:5px 0 6px;transition:border-color .3s var(--ease)}
-.ilink:hover{border-bottom-color:var(--blue-bright);color:var(--blue-bright)}
 
 /* ---------- visit ---------- */
 .visit__grid{display:grid;gap:clamp(38px,5vw,56px)}
@@ -307,13 +293,30 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
 .vsmall{margin-top:18px;font-size:13px;color:var(--bone-52);line-height:1.62}
 .klist li{position:relative;padding-left:18px;margin-bottom:7px}
 .klist li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:1px;background:var(--rule-2)}
-.visit__foot{margin-top:clamp(44px,6vw,76px);display:grid;gap:clamp(30px,4vw,46px)}
+.visit__foot{margin-top:clamp(36px,4.6vw,64px);display:grid;gap:clamp(30px,4vw,46px)}
 
 .visit__cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 40px}
 .visit__cta p{max-width:34ch;color:var(--bone-70);font-size:15px;margin-bottom:20px}
 
+/* ---------- drinks disclosures ---------- */
+/* The full drinks catalogue stays on the page and in the DOM. It just stops standing
+   between a phone and the address. */
+.disc{margin-top:clamp(48px,6.5vw,80px);border-top:1px solid var(--rule)}
+.disc > summary{display:flex;align-items:center;justify-content:space-between;gap:18px;
+  list-style:none;cursor:pointer;padding:17px 0;
+  font-size:11px;font-weight:600;font-stretch:94%;letter-spacing:.19em;text-transform:uppercase;
+  color:var(--bone-52);transition:color .25s var(--ease)}
+.disc > summary::-webkit-details-marker{display:none}
+.disc > summary:hover{color:var(--bone)}
+.disc > summary::after{content:"Show";letter-spacing:.12em;color:var(--bone-52)}
+.disc[open] > summary::after{content:"Hide"}
+.disc[open] > summary{color:var(--bone-70)}
+.disc__body{padding-bottom:clamp(14px,2.4vw,26px)}
+
 /* ---------- footer ---------- */
-.ftr{border-top:1px solid var(--rule);padding-block:clamp(52px,6vw,76px) 40px}
+/* Visit and the footer were one unbroken block of the darkest tone. The footer takes the
+   band colour so the page ends on a change of ground rather than more of the same. */
+.ftr{background:var(--ink-2);border-top:1px solid var(--rule);padding-block:clamp(52px,6vw,76px) 40px}
 .ftr__top{display:grid;gap:34px;align-items:start}
 @media(min-width:820px){.ftr__top{grid-template-columns:minmax(0,1fr) auto;gap:48px}}
 .ftr__mark{width:126px;color:var(--bone)}
@@ -359,8 +362,7 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
     <nav class="nav" aria-label="Primary">
       <span class="nav__links">
         <a href="#menu">Menu</a>
-        <a class="opt" href="#visit">Visit</a>
-        <a class="opt" href="https://giftcards.nowbookit.com/cards/card-selection?accountid=17c2931e-c697-4687-94fd-19811abe4bb3&amp;venueid=8169&amp;theme=light&amp;accent=33,15,243" rel="noopener">Gift cards</a>
+        <a href="#visit">Visit</a>
       </span>
       <a class="btn btn--sm" href="https://bookings.nowbookit.com/?accountid=17c2931e-c697-4687-94fd-19811abe4bb3&amp;venueid=8169&amp;theme=light&amp;colors=hex" rel="noopener">Book a table</a>
     </nav>
@@ -383,11 +385,11 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
     <div class="wrap hero__in">
       <h1 id="h1">
         <svg class="wm wm--hero" viewBox="0 0 2080 458" role="img" aria-label="Sonny's"><use href="#wordmark"/></svg>
-        <span class="hero__line">A small bar in Mount Hawthorn<br class="brk"> with a very good kitchen.</span>
+        <span class="hero__line">A small bar in Mount Hawthorn with a very good kitchen.</span>
       </h1>
       <div class="hero__cta">
         <a class="btn" href="https://bookings.nowbookit.com/?accountid=17c2931e-c697-4687-94fd-19811abe4bb3&amp;venueid=8169&amp;theme=light&amp;colors=hex" rel="noopener">Book a table</a>
-        <a class="btn btn--ghost" href="#menu">See the menu</a>
+        <a class="tlink" href="#menu">See the menu</a>
       </div>
     </div>
     <div class="hero__rail">
@@ -399,26 +401,26 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
         <span class="hero__sep" aria-hidden="true">·</span>
         <span>126A Hobart St, Mount Hawthorn</span>
       </p>
-      <p class="label">Winner · Best Bar Dining · WA Good Food Guide 2025</p>
+      <p class="hero__award">Winner, Best Bar Dining, WA Good Food Guide 2025</p>
     </div>
   </section>
 
   <!-- ============ THE BAR ============ -->
-  <section class="sect" id="bar" aria-labelledby="bar-h">
+  <section class="sect sect--bar" id="bar" aria-labelledby="bar-h">
     <div class="wrap">
       <div class="bar__grid">
         <div class="bar__copy">
           <div class="sect__head" style="margin-bottom:26px">
-            <p class="label">The bar</p>
             <h2 id="bar-h">Most of it's cooked over fire.</h2>
           </div>
           <p class="lead">
             Head chef and owner <strong>Sofika Boulton</strong> runs the kitchen. Oysters,
-            cured kangaroo, a kilo of T-bone, whatever the market turned up.
+            cured kangaroo, market fish off the grill, a kilo of beef T&#8209;bone.
           </p>
           <p class="lead">
-            The cocktail list is less restrained. So is the wine list. Margaret River on one
-            page, Naoussa on the next.
+            Sixteen cocktails, half of them on Republic of Fremantle spirits. The wine list is a
+            booklet rather than a page: sparkling, white and orange, mostly Margaret River and the
+            rest of WA, with France, Italy and Greece behind it.
           </p>
         </div>
 
@@ -435,14 +437,13 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
             </div>
           </figure>
           <figure>
-            <div class="ph" style="aspect-ratio:2748/1912">
-              <img loading="lazy" decoding="async" width="2748" height="1912"
-                src="https://static.wixstatic.com/media/ebaa3f_e133b4cb899d4bb4b7b8c71251ac7c26~mv2.png/v1/fill/w_1000,h_696,al_c,q_78,enc_auto/ebaa3f_e133b4cb899d4bb4b7b8c71251ac7c26~mv2.png"
-                srcset="https://static.wixstatic.com/media/ebaa3f_e133b4cb899d4bb4b7b8c71251ac7c26~mv2.png/v1/fill/w_640,h_445,al_c,q_78,enc_auto/ebaa3f_e133b4cb899d4bb4b7b8c71251ac7c26~mv2.png 640w,
-                        https://static.wixstatic.com/media/ebaa3f_e133b4cb899d4bb4b7b8c71251ac7c26~mv2.png/v1/fill/w_1000,h_696,al_c,q_78,enc_auto/ebaa3f_e133b4cb899d4bb4b7b8c71251ac7c26~mv2.png 1000w,
-                        https://static.wixstatic.com/media/ebaa3f_e133b4cb899d4bb4b7b8c71251ac7c26~mv2.png/v1/fill/w_1500,h_1044,al_c,q_74,enc_auto/ebaa3f_e133b4cb899d4bb4b7b8c71251ac7c26~mv2.png 1500w"
-                sizes="(min-width:980px) 32vw, (min-width:620px) 46vw, 92vw"
-                alt="A spread of desserts on ceramic plates at Sonny's, including a chocolate tart.">
+            <div class="ph">
+              <img loading="lazy" decoding="async" width="1125" height="2000"
+                src="https://static.wixstatic.com/media/ebaa3f_5470044fb8f54945aaf292906292e9f3~mv2.jpg/v1/fill/w_720,h_1280,al_c,q_78,enc_auto/ebaa3f_5470044fb8f54945aaf292906292e9f3~mv2.jpg"
+                srcset="https://static.wixstatic.com/media/ebaa3f_5470044fb8f54945aaf292906292e9f3~mv2.jpg/v1/fill/w_560,h_996,al_c,q_78,enc_auto/ebaa3f_5470044fb8f54945aaf292906292e9f3~mv2.jpg 560w,
+                        https://static.wixstatic.com/media/ebaa3f_5470044fb8f54945aaf292906292e9f3~mv2.jpg/v1/fill/w_1000,h_1778,al_c,q_74,enc_auto/ebaa3f_5470044fb8f54945aaf292906292e9f3~mv2.jpg 1000w"
+                sizes="(min-width:620px) 30vw, 64vw"
+                alt="Coals and open flame under the grill in the wood-fired kitchen at Sonny's.">
             </div>
           </figure>
         </div>
@@ -451,13 +452,10 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
   </section>
 
   <!-- ============ MENU ============ -->
-  <section class="sect sect--band" id="menu" aria-labelledby="menu-h" style="scroll-margin-top:92px">
+  <section class="sect sect--band sect--tight" id="menu" aria-labelledby="menu-h" style="scroll-margin-top:92px">
     <div class="wrap">
       <div class="sect__head">
-        <p class="label">Menu</p>
         <h2 id="menu-h">This week's menu.</h2>
-        <p class="lead" style="margin-top:18px">It changes every week, so next week this
-        will be something else. Updated <time id="menuUpdated" datetime="2026-09-14">14 September 2026</time>.</p>
       </div>
 
       <div class="menu__grid">
@@ -474,32 +472,39 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
             <li class="mrow mrow--break"><h3 class="mrow__name">Grilled market fish / Roast chicken butter / Goolwa pipis</h3><p class="mrow__price">40</p></li>
             <li class="mrow"><h3 class="mrow__name">Beef short rib / Fermented garlic scape / Mustard</h3><p class="mrow__price">50</p></li>
             <li class="mrow"><h3 class="mrow__name">Bone-in pork collar / Brown butter and koji jus</h3><p class="mrow__price">48</p></li>
-            <li class="mrow"><h3 class="mrow__name">1kg beef T-bone</h3><p class="mrow__price">150</p></li>
+            <li class="mrow"><h3 class="mrow__name">1kg beef T&#8209;bone</h3><p class="mrow__price">150</p></li>
             <li class="mrow"><h3 class="mrow__name">Charcoaled kipfler / Truffle kipfler custard / Hazelnut oil</h3><p class="mrow__price">20</p></li>
             <li class="mrow"><h3 class="mrow__name">Fennel &amp; snap pea salad / Anchovy / Olive vinaigrette</h3><p class="mrow__price">18</p></li>
             <li class="mrow mrow--break"><h3 class="mrow__name">Basque cheesecake</h3><p class="mrow__price">16</p></li>
             <li class="mrow"><h3 class="mrow__name">Cambray Farm cheese / Rye lavosh</h3><p class="mrow__price">16 / 30 / 40</p></li>
           </ul>
           <p class="mset"><b>Three-course Chef's Selection</b> <span>75 per person</span></p>
-          <div class="mnote">
-            <a class="ilink" href="https://www.instagram.com/sonnys_mthawthorn/" rel="noopener">Latest on Instagram →</a>
-          </div>
         </div>
 
-        <figure class="menu__fire">
-          <div class="ph" style="aspect-ratio:1125/2000">
-            <img loading="lazy" decoding="async" width="1125" height="2000"
-              src="https://static.wixstatic.com/media/ebaa3f_5470044fb8f54945aaf292906292e9f3~mv2.jpg/v1/fill/w_720,h_1280,al_c,q_78,enc_auto/ebaa3f_5470044fb8f54945aaf292906292e9f3~mv2.jpg"
-              srcset="https://static.wixstatic.com/media/ebaa3f_5470044fb8f54945aaf292906292e9f3~mv2.jpg/v1/fill/w_560,h_996,al_c,q_78,enc_auto/ebaa3f_5470044fb8f54945aaf292906292e9f3~mv2.jpg 560w,
-                      https://static.wixstatic.com/media/ebaa3f_5470044fb8f54945aaf292906292e9f3~mv2.jpg/v1/fill/w_1000,h_1778,al_c,q_74,enc_auto/ebaa3f_5470044fb8f54945aaf292906292e9f3~mv2.jpg 1000w"
-              sizes="(min-width:1020px) 26vw, 92vw"
-              alt="Coals and open flame under the grill in the wood-fired kitchen at Sonny's.">
+        <div class="menu__side">
+        <figure class="menu__ph">
+            <div class="ph" style="aspect-ratio:2748/1912">
+              <img loading="lazy" decoding="async" width="2748" height="1912"
+                src="https://static.wixstatic.com/media/ebaa3f_e133b4cb899d4bb4b7b8c71251ac7c26~mv2.png/v1/fill/w_1000,h_696,al_c,q_78,enc_auto/ebaa3f_e133b4cb899d4bb4b7b8c71251ac7c26~mv2.png"
+                srcset="https://static.wixstatic.com/media/ebaa3f_e133b4cb899d4bb4b7b8c71251ac7c26~mv2.png/v1/fill/w_640,h_445,al_c,q_78,enc_auto/ebaa3f_e133b4cb899d4bb4b7b8c71251ac7c26~mv2.png 640w,
+                        https://static.wixstatic.com/media/ebaa3f_e133b4cb899d4bb4b7b8c71251ac7c26~mv2.png/v1/fill/w_1000,h_696,al_c,q_78,enc_auto/ebaa3f_e133b4cb899d4bb4b7b8c71251ac7c26~mv2.png 1000w,
+                        https://static.wixstatic.com/media/ebaa3f_e133b4cb899d4bb4b7b8c71251ac7c26~mv2.png/v1/fill/w_1500,h_1044,al_c,q_74,enc_auto/ebaa3f_e133b4cb899d4bb4b7b8c71251ac7c26~mv2.png 1500w"
+                sizes="(min-width:1020px) 27vw, 92vw"
+                alt="A spread of desserts on ceramic plates at Sonny's, including a chocolate tart.">
+            </div>
+          </figure>
+          <div class="wine">
+            <p class="label">Wine</p>
+            <p>Sparkling, white and orange by the bottle, mostly Margaret River and the rest
+            of WA, with France, Italy and Greece behind it. Bottles run from about 60 to 160.
+            The full list is a booklet, and it is on the table rather than on this page.</p>
           </div>
-        </figure>
+        </div>
       </div>
 
-      <div class="mgroup">
-        <p class="label">Cocktails</p>
+      <details class="disc" id="cocktails">
+        <summary><span>Cocktails <span class="disc__n">(16)</span></span></summary>
+        <div class="disc__body">
         <ul class="dlist">
           <li class="drow"><h3>Strawberry Limoncello<span>19</span></h3><p>Republic of Fremantle vodka, limoncello, bubbles, strawberry, lemon</p></li>
           <li class="drow"><h3>One Night of Passion<span>20</span></h3><p>Republic of Fremantle vanilla infused vodka, passionfruit, white chocolate, lime</p></li>
@@ -519,9 +524,13 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
           <li class="drow"><h3>Call Me By My Name<span>21</span></h3><p>Republic of Fremantle gin, coffee liqueur, cacao nibs, espresso</p></li>
         </ul>
         <p class="mnote"><span style="font-size:14.5px;color:var(--bone-52)">Classics available on request.</span></p>
-      </div>
+        </div>
+      </details>
 
-      <div class="tail">
+      <details class="disc" id="beer">
+        <summary><span>Beer, cider and soft drinks</span></summary>
+        <div class="disc__body">
+      <div class="tail" style="margin-top:0">
         <div>
           <h3>Tap &amp; packaged</h3>
           <ul>
@@ -548,49 +557,59 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
           </ul>
         </div>
       </div>
+        </div>
+      </details>
+
+      <script>/* Open on anything bigger than a phone. Runs during parse, so nothing flashes. */
+      if(window.matchMedia("(min-width:760px)").matches){
+        Array.prototype.forEach.call(document.querySelectorAll("details.disc"),function(d){d.open=true});
+      }</script>
 
       <p class="mnote" style="margin-top:clamp(34px,4vw,48px);font-size:13px;color:var(--bone-52)">All prices in AUD.</p>
 
-      <div class="hero__cta" style="margin-top:30px;justify-content:flex-start">
-        <a class="btn" href="https://bookings.nowbookit.com/?accountid=17c2931e-c697-4687-94fd-19811abe4bb3&amp;venueid=8169&amp;theme=light&amp;colors=hex" rel="noopener">Book a table</a>
-      </div>
     </div>
   </section>
 
   <!-- ============ VISIT ============ -->
-  <section class="sect sect--bg" id="visit" aria-labelledby="visit-h" style="scroll-margin-top:92px">
-    <div class="sect__bg" aria-hidden="true">
-      <picture>
-        <source type="image/webp"
-          srcset="assets/visit-960.webp 960w, assets/visit-1440.webp 1440w, assets/visit-1920.webp 1920w" sizes="100vw">
-        <img loading="lazy" decoding="async" width="1365" height="679"
-          src="assets/visit-1440.jpg"
-          srcset="assets/visit-960.jpg 960w, assets/visit-1440.jpg 1440w, assets/visit-1920.jpg 1920w"
-          sizes="100vw" alt="">
-      </picture>
-    </div>
+  <section class="sect" id="visit" aria-labelledby="visit-h" style="scroll-margin-top:92px;padding-bottom:var(--sect-end)">
     <div class="wrap">
-      <div class="sect__head">
-        <p class="label">Visit</p>
-        <h2 id="visit-h">Find us on Hobart Street, Mt&nbsp;Hawthorn.</h2>
+      <div class="sect__head" style="margin-bottom:0">
+        <h2 id="visit-h">Find us on Hobart Street, Mount Hawthorn.</h2>
       </div>
+
+      <figure class="exterior">
+        <div class="ph">
+          <picture>
+            <source media="(max-width:699px)" type="image/webp"
+              srcset="assets/visit-street-466.webp 466w, assets/visit-street-932.webp 932w" sizes="100vw">
+            <source media="(max-width:699px)"
+              srcset="assets/visit-street-466.jpg 466w, assets/visit-street-932.jpg 932w" sizes="100vw">
+            <source type="image/webp"
+              srcset="assets/visit-wide-960.webp 960w, assets/visit-wide-1440.webp 1440w, assets/visit-wide-1920.webp 1920w" sizes="100vw">
+            <img loading="lazy" decoding="async" width="1920" height="655"
+              src="assets/visit-wide-1440.jpg"
+              srcset="assets/visit-wide-960.jpg 960w, assets/visit-wide-1440.jpg 1440w, assets/visit-wide-1920.jpg 1920w"
+              sizes="100vw"
+              alt="The front of Sonny's on Hobart Street: umbrella tables busy under the gum trees, with the stone frontage and the blue Sonny's sign beside the entrance.">
+          </picture>
+        </div>
+      </figure>
 
       <div class="visit__grid">
         <div class="vcol">
-          <h3>Find us</h3>
+          <h3>Address</h3>
           <p>
             <span style="color:var(--bone)">Sonny's</span><br>
             126A Hobart St<br>
             Mount Hawthorn WA 6016
           </p>
           <p style="margin-top:16px">
-            <a href="https://www.google.com/maps/search/?api=1&amp;query=Sonny%27s%20126A%20Hobart%20St%20Mount%20Hawthorn%20WA%206016" rel="noopener">Open in Google Maps →</a>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Sonny%27s%20126A%20Hobart%20St%20Mount%20Hawthorn%20WA%206016" rel="noopener">Open in Google Maps</a>
           </p>
           <p class="vsmall">Look for the blue sign on the stone.</p>
           <ul class="klist" style="margin-top:22px">
             <li>Wheelchair accessible</li>
-            <li>Outdoor seating out front</li>
-            <li>Dogs welcome out front, bowls at the door</li>
+            <li>Outdoor seating out front, dogs welcome, bowls at the door</li>
           </ul>
         </div>
 
@@ -638,11 +657,7 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
       <nav class="ftr__nav" aria-label="Footer">
         <a href="#menu">Menu</a>
         <a href="#visit">Visit</a>
-        <a href="https://bookings.nowbookit.com/?accountid=17c2931e-c697-4687-94fd-19811abe4bb3&amp;venueid=8169&amp;theme=light&amp;colors=hex" rel="noopener">Book</a>
-        <a href="https://giftcards.nowbookit.com/cards/card-selection?accountid=17c2931e-c697-4687-94fd-19811abe4bb3&amp;venueid=8169&amp;theme=light&amp;accent=33,15,243" rel="noopener">Gift cards</a>
-        <a href="https://www.instagram.com/sonnys_mthawthorn/" rel="noopener">Instagram</a>
-        <a href="https://www.facebook.com/sonnysmthawthorn" rel="noopener">Facebook</a>
-        <a href="mailto:bookings@sonnysbar.com.au">Email</a>
+        <a href="https://bookings.nowbookit.com/?accountid=17c2931e-c697-4687-94fd-19811abe4bb3&amp;venueid=8169&amp;theme=light&amp;colors=hex" rel="noopener">Book a table</a>
       </nav>
     </div>
 
@@ -656,7 +671,7 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
 
     <div class="legal">
       <p>Sonny's operates on the land of the Whadjuk people of the Noongar nation. We pay our respects to Elders past and present.</p>
-      <p>Le Hound Group Pty Ltd · Small Bar Licence 634217926921 · 126A Hobart St, Mt Hawthorn WA 6016</p>
+      <p>Le Hound Group Pty Ltd · Small Bar Licence 634217926921 · 126A Hobart St, Mount Hawthorn WA 6016</p>
       <p><strong style="color:var(--bone-70);font-weight:500">Warning.</strong> Under the Liquor Control Act 1988, it is an offence: to sell or supply liquor to a person under the age of 18 years on licensed or regulated premises; or for a person under the age of 18 years to purchase, or attempt to purchase, liquor on licensed or regulated premises.</p>
       <p>© <span id="yr">2026</span> Sonny's</p>
     </div>

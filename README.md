@@ -98,6 +98,16 @@ venue. Every one is on the page — get a yes from Sonny's before it goes live.
   on the page — the awards are set as type in the footer instead. If you want the WA
   Good Food Guide roundel as a mark, ask the guide for the vector logo, or send me the
   badge PNGs directly (I cannot pull them off the Wix CDN from here).
+- **The wine list.** The page now says what the list covers (sparkling, white and orange;
+  mostly Margaret River and the rest of WA, with France, Italy and Greece; bottles about
+  60 to 160) because that is what the booklet you photographed shows. **The bottles
+  themselves are not on the page and must not be guessed.** For a wine bar that is the
+  biggest remaining content gap. Ask for the current list as a dated PDF, or for
+  permission to publish a by-the-glass selection that changes less often.
+- **A real content-update date for the menu.** The page said "Updated 14 September 2026",
+  which was the day it was built, not the day the menu changed. That line is gone. Do not
+  reinstate a date unless the venue actually tells you when the card last changed, and
+  never wire it to the visitor's clock.
 - **A real favicon** (currently an inline SVG placeholder).
 - Parking / walk-in policy / group bookings / corkage — add as an FAQ block later and
   mark it up as `FAQPage`. High value for AI answer engines.
@@ -125,7 +135,21 @@ four widths as WebP with JPEG fallbacks, served through `<picture>` + `srcset` a
 preloaded at high priority. Largest file a phone will pull is 55KB; a 5K desktop
 tops out at 225KB. This is the LCP element, so it's the one that had to be local.
 
-The other four photographs still come from the Wix CDN via Wix's own
+**Each photograph now has one job.** The fire moved up beside "Most of it's cooked over
+fire", where the heading and the picture finally say the same thing; the desserts moved
+down into the menu, where they sit level with the dessert rows in the list beside them.
+Neither was true before: the fire was an arbitrary pause between the food and the
+cocktails, and the desserts were illustrating a sentence about the kitchen.
+
+| Photograph | Job |
+|---|---|
+| Blurred dinner table | The feeling of an evening. Hero. |
+| Window seat | What it is like to sit in the actual room. |
+| Wood fire | The cooking method, next to the sentence about it. |
+| Desserts | The dessert end of the food list, beside it. |
+| Exterior | Recognising the place from the street. |
+
+The remaining three photographs still come from the Wix CDN via Wix's own
 `/v1/fill/w_…,h_…,enc_auto/` transform, which generates each `srcset` step on the fly.
 They're below the fold and lazy-loaded, so the cost is low — but **before launch**,
 pull them down and self-host them alongside the hero for consistency and to remove
@@ -134,8 +158,9 @@ the last third-party dependency. Source IDs:
 - window seat `ebaa3f_56c5e098728a4288a6fc9ef02135eaa5~mv2.jpg` (1688×3000)
 - wood fire `ebaa3f_5470044fb8f54945aaf292906292e9f3~mv2.jpg` (1125×2000)
 - desserts `ebaa3f_e133b4cb899d4bb4b7b8c71251ac7c26~mv2.png` (2748×1912)
-- exterior `ebaa3f_304a3495242342abaee4a32da35b0f2e~mv2.png` (1366×768 — low res, reshoot)
-- wordmark `ebaa3f_509e59dc3caf4f5d974daf21a055a48e~mv2.png`
+- wordmark `ebaa3f_509e59dc3caf4f5d974daf21a055a48e~mv2.png` (schema only)
+
+The exterior is now self-hosted in both frames. See **THE EXTERIOR** below.
 
 Full URL: `https://static.wixstatic.com/media/<ID>/v1/fill/w_W,h_H,al_c,q_80,enc_auto/<ID>`
 
@@ -169,39 +194,36 @@ One rule across all three lists, so it reads as considered rather than inconsist
 If Sonny's want the list reproduced exactly as printed — all lowercase, shouty brands
 and all — it's a find-and-replace, but the page will look less deliberate.
 
-## THE VISIT UNDERLAY
+## THE EXTERIOR — no longer an underlay
 
-The exterior photograph sits behind the Visit section. It works because the image is
-**pre-treated in the build, not filtered by CSS at runtime**. Luminance is compressed
-into grey 20-64 while hue and chroma are preserved, then chroma is pushed back up,
-so it reads as a dusk-graded colour photo rather than a washed-out grey one:
+The exterior used to sit behind the Visit section, tone-mapped into grey 20–64 so text
+could clear it. That treatment is what erased the blue sign, which the copy right beside
+it told people to look for. The underlay is gone. The photograph is now a **full-bleed
+figure** at its own exposure, with the practical text on plain ink below it, so neither
+has to be compromised for the other.
 
-```
-LO, HI, GAMMA, SAT = 20, 64, 0.66, 1.18
-# RGB scaled by the luminance ratio -> hue survives, luminance is exact
-# chroma boost tapers in the darkest areas so shadow noise doesn't go neon
-```
+**Two frames, art-directed.**
 
-That cap is a proof, not a sample: no pixel can exceed luminance-equivalent 64, and
-bone-70 text needs 74, so the type clears 4.5:1 anywhere on it. Measured on the real
-plate: 30 text elements in that section, none over budget, brightest background under
-any text grey 61.
+| Width | File | Ratio | Shows |
+|---|---|---|---|
+| under 700px | `assets/visit-street-466\|932.webp\|jpg` | 466:642 | The frontage you sent: gum tree, umbrella tables in use, the window |
+| 700px and up | `assets/visit-wide-960\|1440\|1920.webp\|jpg` | 1920:655 | The whole frontage: umbrellas, stone, the blue sign, the entrance |
 
-**Two layouts, one image.** On desktop it is a full-section ground. A phone column is
-several times taller than the photograph, so covering the whole section just zooms into
-foliage — below 700px it sits behind the **top** of the section instead, under the
-heading and the address, at `min(88vw,370px)` tall, with a `mask-image` fading it out
-before the columns start so there is no hard edge.
+**The wide frame was recovered, not sourced.** The only copy of that photograph left in
+the project was the tone-mapped one. The treatment is invertible, so it was inverted:
+undo the chroma taper, undo the luminance compression, assume the original spanned the
+full range. The sign, the stone and the doorway all came back. But it was reconstructed
+from a file with roughly 44 luminance levels, so the sky is blown and the dark upper
+box is blocky. **It holds up at a band that size and it should still be replaced.**
 
-Mobile carries `brightness(1.3)`, and that number is load-bearing: the plate is capped
-at 64 so anything above about 1.15 combined with the scrim starts eating into the
-contrast budget. Measured at 390px: 30 text elements, none over budget, brightest
-background under any text grey 68 against 74. **Do not raise it without re-measuring.**
+**What to ask for:** the original full-resolution frontage photograph, and ideally a
+second frame that has both the umbrella tables and the blue sign in one portrait crop —
+that would let mobile and desktop run the same image. The file you sent is 466×682,
+which is under 2x for a 390px phone, so it is soft on a retina screen.
 
-**To swap the photo**, re-run the same treatment. A raw image dropped in will fail the
-way the first two attempts did. Shipped files: `assets/visit-960|1440|1920.webp|jpg`.
-
-**Source is 1365x679.** A dusk reshoot of the frontage is still the real fix.
+**"Look for the blue sign on the stone"** is now a wayfinding line in the Address column
+rather than a caption, because the mobile frame does not show the sign and a caption
+would have contradicted the picture above it. The desktop frame does show it.
 
 ## TYPOGRAPHY RULES
 
@@ -212,12 +234,15 @@ way the first two attempts did. Shipped files: `assets/visit-960|1440|1920.webp|
   capitals wherever they fall. Drinks descriptions start with a capital.
 - **Drinks brands are Title Case, never caps-lock**: Capi, StrangeLove. XPA stays capitalised.
 
-## CTA SHAPE
+## CTA SHAPE — the radius stays, the pair does not
 
-Buttons are now fully rounded to pick up the circular bowls in the wordmark. It's a
-single token — `--radius` at the top of the CSS. Set it to `10px` if the full pill
-reads too soft next to the photography; everything else on the page stays square, so
-the curve is reserved for actions and the one Chef's Selection panel.
+The full pill picks up the circular bowls in the wordmark and it is a single token,
+`--radius`. It stays. What changed is that the hero no longer offers **two** near-identical
+pills: *Book a table* is the blue pill, *See the menu* is a quiet underlined link. One
+decision, one route. The glass blur that was on the second button is gone.
+
+The Chef's Selection panel that also used `--radius` has been removed — it read as
+something you were meant to click. It is now an ordinary menu row.
 
 ## TYPE — Anybody
 
@@ -239,6 +264,35 @@ paragraphs in "The bar" section and decide whether that's right for the client.
 Self-hosted rather than pulled from Google Fonts: one request instead of two,
 no third-party DNS, no FOUT from a cross-origin stylesheet. Licence is SIL OFL,
 so self-hosting and commercial use are both fine.
+
+## DELIBERATELY KEPT, AGAINST ADVICE
+
+Three things a reviewer might expect to have changed and did not:
+
+1. **The pill radius.** It is drawn from the wordmark, and you chose it. The problem was
+   never the shape, it was two of them side by side. That is fixed instead.
+2. **"Sonny was a rescue greyhound."** Still out. You cut it twice as AI-sounding. It is
+   your venue and your call, and it has not been reinstated.
+3. **"This week's menu."** Kept because you want the weekly framing to support a
+   retainer. It is still an arrangement that does not exist yet, so it stays on the
+   confirm list. The sentence that explained it underneath is gone — the heading
+   already said it.
+
+## MOBILE — the drinks are no longer in the way
+
+At 390px the menu section used to be 4,371px of an 8,485px page: every cocktail, beer
+and soft drink stood between a phone and the address. Cocktails and "Beer, cider and
+soft drinks" are now native `<details>` disclosures.
+
+- They are **closed in the markup** and opened by a one-line script above 760px, which
+  runs during parse so nothing flashes open and shut.
+- The content is in the DOM either way, so crawlers, AI answer engines and find-in-page
+  all still see every item. Chrome auto-expands `<details>` for Ctrl+F.
+- Keyboard operable, focus-visible, no animation, `Show` / `Hide` in plain words.
+
+Menu section is now 2,214px of a 6,920px page. Visit is also back in the header at every
+width — it used to disappear under 720px, which meant a phone could not reach the address
+without scrolling the whole drinks list.
 
 ## TECHNICAL
 - Hero composition is tuned to this specific photograph. The motion blur does most of
