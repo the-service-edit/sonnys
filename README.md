@@ -224,7 +224,7 @@ has to be compromised for the other.
 
 | Width | File | Ratio | Shows |
 |---|---|---|---|
-| under 700px | `assets/visit-street-466\|932.webp\|jpg` | 466:642 | The frontage you sent: gum tree, umbrella tables in use, the window |
+| under 700px | `assets/visit-street-520\|780\|1042.webp\|jpg` | 1042:1421 | The frontage you sent: gum tree, umbrella tables in use, the window |
 | 700px and up | `assets/visit-wide-960\|1440\|1920.webp\|jpg` | 1920:655 | The whole frontage: umbrellas, stone, the blue sign, the entrance |
 
 **The wide frame was recovered, not sourced.** The only copy of that photograph left in
@@ -234,10 +234,13 @@ full range. The sign, the stone and the doorway all came back. But it was recons
 from a file with roughly 44 luminance levels, so the sky is blown and the dark upper
 box is blocky. **It holds up at a band that size and it should still be replaced.**
 
-**What to ask for:** the original full-resolution frontage photograph, and ideally a
-second frame that has both the umbrella tables and the blue sign in one portrait crop —
-that would let mobile and desktop run the same image. The file you sent is 466×682,
-which is under 2x for a 390px phone, so it is soft on a retina screen.
+**What to ask for:** the wide frame is still the reconstruction. A second frame with both
+the umbrella tables and the blue sign in one portrait crop would let mobile and desktop
+run the same real photograph and retire the recovery entirely.
+
+The mobile frame is fine: 1042×1510 source, trimmed 5.9% off the top to match the
+framing already signed off, served at 520 / 780 / 1042. A Pro Max at 3x renders it at
+430×586 from the 1042 candidate.
 
 **"Look for the blue sign on the stone"** is now a wayfinding line in the Address column
 rather than a caption, because the mobile frame does not show the sign and a caption
@@ -342,6 +345,27 @@ soft drinks" are now native `<details>` disclosures.
 Menu section is now 2,214px of a 6,920px page. Visit is also back in the header at every
 width — it used to disappear under 720px, which meant a phone could not reach the address
 without scrolling the whole drinks list.
+
+## IMAGE PROTECTION — what it does and does not do
+
+Right-click "Save image as" and drag-to-desktop are blocked on imagery: `contextmenu` and
+`dragstart` are cancelled for anything inside `img`, `picture`, `.ph` or the wordmark SVG,
+plus `-webkit-touch-callout:none` to kill the iOS long-press save sheet and
+`user-select:none` on those elements.
+
+**Scoped deliberately.** Right-click still works on text, so a customer can copy the
+address, the email and the hours. Blocking the whole document would be hostile and would
+break "open link in new tab" and browser translation.
+
+**Be clear with the client about the limit.** This stops casual saving. It cannot stop
+anyone who wants the file: every image has to reach the browser to be displayed, so
+DevTools, the network tab, view-source, disabling JavaScript, or just requesting
+`/assets/visit-street-1042.jpg` directly all still work. A screenshot always works.
+
+If the photographer's licensing is the real concern, the levers that actually matter are:
+keep the web copies at web resolution (the largest file here is 1042px wide, unusable for
+print), and watermark anything that must not be reused. The three Wix-hosted photographs
+are served from Wix's public CDN and are outside this protection entirely.
 
 ## TECHNICAL
 - Hero composition is tuned to this specific photograph. The motion blur does most of

@@ -89,6 +89,13 @@ body{
   overflow-x:hidden;
 }
 img{max-width:100%;display:block;height:auto}
+/* Deterrent against casual saving: no drag to desktop, no iOS long-press save sheet,
+   no selection. Scoped to imagery so text stays selectable and copyable. */
+img,picture,.ph,.wm{
+  -webkit-user-drag:none;user-drag:none;
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;user-select:none;
+}
 a{color:inherit;text-decoration:none}
 h1,h2,h3,p,figure,dl,dd{margin:0}
 ul{margin:0;padding:0;list-style:none}
@@ -219,7 +226,7 @@ h1{display:flex;flex-direction:column;align-items:center;gap:clamp(20px,2.8vw,28
    exposure, and it sits directly under the instruction to look for the blue sign. */
 .exterior{width:100vw;margin-inline:calc(50% - 50vw);
   margin-block:clamp(26px,3.4vw,40px) clamp(38px,5vw,60px)}
-.exterior .ph{aspect-ratio:466/642}
+.exterior .ph{aspect-ratio:1042/1421}
 @media(min-width:700px){.exterior .ph{aspect-ratio:1920/655}}
 
 .sect--band{background:var(--ink-2)}
@@ -606,9 +613,9 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
         <div class="ph">
           <picture>
             <source media="(max-width:699px)" type="image/webp"
-              srcset="assets/visit-street-466.webp 466w, assets/visit-street-932.webp 932w" sizes="100vw">
+              srcset="assets/visit-street-520.webp 520w, assets/visit-street-780.webp 780w, assets/visit-street-1042.webp 1042w" sizes="100vw">
             <source media="(max-width:699px)"
-              srcset="assets/visit-street-466.jpg 466w, assets/visit-street-932.jpg 932w" sizes="100vw">
+              srcset="assets/visit-street-520.jpg 520w, assets/visit-street-780.jpg 780w, assets/visit-street-1042.jpg 1042w" sizes="100vw">
             <source type="image/webp"
               srcset="assets/visit-wide-960.webp 960w, assets/visit-wide-1440.webp 1440w, assets/visit-wide-1920.webp 1920w" sizes="100vw">
             <img loading="lazy" decoding="async" width="1920" height="655"
@@ -1270,6 +1277,16 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
       bar.classList.toggle("is-on", !e[0].isIntersecting);
     }, { threshold: 0 }).observe(hero);
   }
+
+  /* Block the save-image context menu and drag-out on imagery only. Right-click stays
+     available on text, so the address and hours can still be copied. */
+  function isMedia(t) { return t && t.closest && t.closest("img, picture, .ph, svg.wm"); }
+  document.addEventListener("contextmenu", function (e) {
+    if (isMedia(e.target)) e.preventDefault();
+  }, false);
+  document.addEventListener("dragstart", function (e) {
+    if (isMedia(e.target)) e.preventDefault();
+  }, false);
 
   document.getElementById("yr").textContent = new Date().getFullYear();
 })();
