@@ -15,6 +15,24 @@ together and it runs anywhere — GitHub Pages, Netlify, a folder on a desktop.
 
 ---
 
+## VERSIONS
+
+Two builds are deployed, so you can compare them and say which one to change.
+
+| | URL | What it is |
+|---|---|---|
+| **v2** | `/sonnys/` | Current. The refinement pass: exterior as a full-bleed figure, drinks behind disclosures, Visit in the mobile nav, wine copy, photography reassigned. **This is the link to send anyone.** |
+| **v1** | `/sonnys/v1/` | Archived. The original build with the darkened exterior underlay, the full drinks list expanded, and the Chef's Selection capsule. |
+
+- v2 lives at the repo root (`index.html`). v1 lives in `v1/index.html`.
+- Both share one copy of `assets/` and `fonts/` — v1's paths point up one level (`../assets/`).
+  If you delete an asset, check `v1/index.html` first.
+- **v1 is `noindex, nofollow`** and is blocked in `robots.txt`. Two near-identical pages
+  competing in search would cost you more than the comparison is worth.
+- Mobile page height, 390px: **v1 is 8,608px, v2 is 6,920px.**
+- Next time, archive the current root into `v3/` before overwriting it, and keep the root
+  as whatever is current.
+
 ## ⚠ PRICE CONFLICT — RESOLVE FIRST
 
 The printed menu you sent says **THREE COURSE CHEFS SELECTION / 75pp**.
