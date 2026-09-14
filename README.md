@@ -67,12 +67,12 @@ venue. Every one is on the page — get a yes from Sonny's before it goes live.
 
 | # | Claim on the page | Source | Action |
 |---|---|---|---|
-| 1 | "Sonny was a rescue greyhound" | WA Good Food Guide | Confirm, or cut it — it now sits beside the dog bowls, where it earns its place |
 | 2 | **Sofika Boulton, head chef and owner** | You told me the owner part; my sources only had "head chef" | Confirm the ownership before this is public — it's on the page and in the schema |
 | 3 | Wheelchair accessible | WAGFG listing | Confirm |
 | 4 | Dog friendly outside, bowls at the door | WAGFG listing | Confirm |
 | 5 | Outdoor seating out front | Photo + WAGFG | Confirm |
 | 6 | Award: Winner, Best Bar Dining, WA Good Food Guide 2025 | wagoodfoodguide.com/award/best-bar-dining-2025 | Verified winner. Confirm wording they prefer |
+| 6b | Award: Winner, Breakthrough Talent, Sofika Boulton | Read off the award badge on the current site | **The year is my read, not a source.** The badge carries the same WAGFG roundel, so I have grouped it under "WA Good Food Guide 2025". Confirm the year and the exact award name |
 | 7 | `priceRange: "$$$"` in schema | Inferred from the set menu | Confirm or change |
 | 8 | Wine described as "small growers, leftfield varieties, selection by the glass" | Broadsheet + the wine list photo | Confirm the wording |
 
@@ -92,6 +92,12 @@ venue. Every one is on the page — get a yes from Sonny's before it goes live.
   phone number loses walk-in and same-day bookings. Get one, add it to the Contact
   column and to `telephone` in the JSON-LD.
 - **More photography.** Five usable images exist. A site like this wants 10–14.
+- **Clean award logo files.** The two award badges on the current site are Instagram
+  tiles: black artboards with sponsor logos (Distl, Pardoo) and their own typography
+  baked in, at two different aspect ratios. They are not press assets and they are not
+  on the page — the awards are set as type in the footer instead. If you want the WA
+  Good Food Guide roundel as a mark, ask the guide for the vector logo, or send me the
+  badge PNGs directly (I cannot pull them off the Wix CDN from here).
 - **A real favicon** (currently an inline SVG placeholder).
 - Parking / walk-in policy / group bookings / corkage — add as an FAQ block later and
   mark it up as `FAQPage`. High value for AI answer engines.
