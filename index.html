@@ -326,6 +326,15 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
   display:grid;gap:20px;font-size:12px;line-height:1.72;color:var(--bone-52);max-width:74ch}
 .legal p:first-child{color:var(--bone-70)}
 
+.awards{margin-top:clamp(40px,5vw,58px);padding-top:28px;border-top:1px solid var(--rule)}
+.awards__list{margin-top:15px;display:flex;flex-direction:column;gap:9px}
+@media(min-width:640px){
+  .awards__list{flex-direction:row;flex-wrap:wrap;gap:9px 0}
+  .awards__list li + li{margin-left:30px;padding-left:30px;border-left:1px solid var(--rule-2)}
+}
+.awards__list li{font-size:14.5px;font-weight:500;line-height:1.55;letter-spacing:-.006em;color:var(--bone)}
+.awards__list span{color:var(--bone-52)}
+
 /* ---------- reveal ---------- */
 @media (prefers-reduced-motion:reduce){
   .hero__media img{animation:none}
@@ -637,6 +646,14 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
       </nav>
     </div>
 
+    <div class="awards">
+      <p class="label">Winner · WA Good Food Guide 2025</p>
+      <ul class="awards__list">
+        <li>Best Bar Dining</li>
+        <li>Breakthrough Talent <span>· Sofika Boulton</span></li>
+      </ul>
+    </div>
+
     <div class="legal">
       <p>Sonny's operates on the land of the Whadjuk people of the Noongar nation. We pay our respects to Elders past and present.</p>
       <p>Le Hound Group Pty Ltd · Small Bar Licence 634217926921 · 126A Hobart St, Mt Hawthorn WA 6016</p>
@@ -724,7 +741,10 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
           "name": "Book a table at Sonny's"
         }
       },
-      "award": "Winner, Best Bar Dining, WA Good Food Guide Awards 2025",
+      "award": [
+        "Winner, Best Bar Dining, WA Good Food Guide Awards 2025",
+        "Winner, Breakthrough Talent Award (Sofika Boulton), WA Good Food Guide Awards 2025"
+      ],
       "employee": {
         "@type": "Person",
         "name": "Sofika Boulton",
