@@ -8,7 +8,7 @@
 <meta name="description" content="Sonny's is a small bar in Mount Hawthorn with a wood-fired kitchen, a long wine list and a cocktail menu that doesn't take itself seriously. Full food and drink menus, hours and bookings. 126A Hobart St. Winner, Best Bar Dining, WA Good Food Guide 2025. Open Wednesday to Sunday.">
 <link rel="canonical" href="https://www.sonnysbar.com.au/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-<meta name="theme-color" content="#0E0F12">
+<meta name="theme-color" content="#281C17">
 <meta name="msapplication-TileColor" content="#0058E2">
 <meta name="color-scheme" content="dark">
 <meta name="geo.region" content="AU-WA">
@@ -98,7 +98,10 @@ ul{margin:0;padding:0;list-style:none}
 }
 .btn:focus-visible{border-radius:var(--radius)}
 
-.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gut)}
+/* viewport-fit=cover means the page owns the notch area in landscape too. */
+.wrap{max-width:var(--max);margin-inline:auto;
+  padding-left:max(var(--gut),env(safe-area-inset-left,0px));
+  padding-right:max(var(--gut),env(safe-area-inset-right,0px))}
 .skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--bone);color:var(--ink);padding:12px 18px;font-size:14px}
 .skip:focus{left:12px;top:12px}
 
@@ -115,7 +118,8 @@ ul{margin:0;padding:0;list-style:none}
   border-bottom:1px solid transparent;
 }
 .hdr.is-stuck{background:rgba(14,15,18,.82);backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);border-bottom-color:var(--rule)}
-.hdr__in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px}
+.hdr__in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px;
+  padding-top:env(safe-area-inset-top,0px)}
 @media(min-width:900px){.hdr__in{height:92px}}
 .wm{display:block;width:100%;height:auto;fill:currentColor}
 .brand{display:block;line-height:0;width:118px;color:var(--bone);
@@ -159,8 +163,6 @@ ul{margin:0;padding:0;list-style:none}
     linear-gradient(to bottom,rgba(14,15,18,.76) 0%,rgba(14,15,18,.56) 28%,rgba(14,15,18,.18) 52%,rgba(14,15,18,.16) 68%,rgba(14,15,18,.62) 88%,rgba(14,15,18,.93) 100%);
 }
 @media(max-width:760px){
-  /* Let the next section show at the bottom of a phone screen. */
-  .hero{min-height:88svh}
   .hero::after{
     background:
       radial-gradient(ellipse 108% 34% at 50% 42%,rgba(14,15,18,.66) 0%,rgba(14,15,18,.26) 72%,rgba(14,15,18,0) 100%),
@@ -180,12 +182,34 @@ h1{display:flex;flex-direction:column;align-items:center;gap:clamp(20px,2.8vw,28
   align-items:center;gap:6px 14px;font-size:13.5px;color:var(--bone-70)}
 .hero__sep{color:var(--bone-52)}
 @media(max-width:600px){.hero__meta{flex-direction:column;gap:7px}.hero__sep{display:none}}
-.hero__rail{position:absolute;left:0;right:0;bottom:clamp(22px,3.6vh,38px);padding-inline:var(--gut);
+.hero__rail{position:absolute;left:0;right:0;bottom:calc(clamp(22px,3.6vh,38px) + env(safe-area-inset-bottom,0px));padding-inline:var(--gut);
   text-align:center;display:flex;flex-direction:column;align-items:center;gap:9px}
 .hero__award{font-size:13px;line-height:1.5;letter-spacing:.005em;color:var(--bone-70)}
 .status{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;color:var(--bone)}
 .status__dot{width:6px;height:6px;border-radius:50%;background:var(--bone-52);flex:none}
 .status[data-open="true"] .status__dot{background:var(--blue-bright);box-shadow:0 0 0 3px rgba(46,121,255,.22)}
+
+/* ---------- sticky booking bar (phones) ---------- */
+/* Exactly one booking action on screen at a time: below 720px the header button steps
+   aside, the hero carries its own, and this takes over once the hero is behind you.
+   It carries the live open/closed line so it is worth the space it occupies. */
+.bookbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;
+  align-items:center;justify-content:space-between;gap:14px;
+  padding:11px max(var(--gut),env(safe-area-inset-right,0px))
+          calc(11px + env(safe-area-inset-bottom,0px))
+          max(var(--gut),env(safe-area-inset-left,0px));
+  background:rgba(14,15,18,.88);border-top:1px solid var(--rule);
+  backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);
+  visibility:hidden;transform:translateY(102%);
+  transition:transform .32s var(--ease),visibility .32s var(--ease);
+}
+@media(max-width:719px){.bookbar{display:flex}.hdr .btn--sm{display:none}}
+.bookbar.is-on{visibility:visible;transform:none}
+.bookbar .status{font-size:12.5px;min-width:0;flex:0 1 auto}
+.bookbar .status > span:last-child{min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.bookbar .btn--sm{flex:none}
+@media (prefers-reduced-motion:reduce){.bookbar{transition:none}}
 
 /* ---------- generic section ---------- */
 .sect{padding-block:var(--sect)}
@@ -325,6 +349,7 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
 .ftr__nav{display:flex;flex-wrap:wrap;gap:14px 26px}
 .ftr__nav a{display:inline-block;padding-block:6px;font-size:13px;color:var(--bone-70);transition:color .25s var(--ease)}
 .ftr__nav a:hover{color:var(--blue-bright)}
+@media(max-width:719px){.ftr{padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}}
 .legal{margin-top:clamp(40px,5vw,60px);padding-top:28px;border-top:1px solid var(--rule);
   display:grid;gap:20px;font-size:12px;line-height:1.72;color:var(--bone-52);max-width:74ch}
 .legal p:first-child{color:var(--bone-70)}
@@ -646,6 +671,14 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
     </div>
   </section>
 </main>
+
+<div class="bookbar" id="bookbar">
+  <span class="status" id="status2" data-open="false">
+    <span class="status__dot" aria-hidden="true"></span>
+    <span id="statusText2">Wednesday to Sunday</span>
+  </span>
+  <a class="btn btn--sm" href="https://bookings.nowbookit.com/?accountid=17c2931e-c697-4687-94fd-19811abe4bb3&amp;venueid=8169&amp;theme=light&amp;colors=hex" rel="noopener">Book a table</a>
+</div>
 
 <footer class="ftr">
   <div class="wrap">
@@ -1189,6 +1222,7 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
   var HOURS = { 3: [16, 22], 4: [16, 22], 5: [12, 24], 6: [12, 24], 0: [12, 21] };
   var LABEL = { 5: "late", 6: "late" };
   var DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  var SHORT = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   function perthNow() {
     var p = new Intl.DateTimeFormat("en-AU", {
@@ -1202,17 +1236,39 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
   var now = perthNow(), today = HOURS[now.d], mins = now.h * 60 + now.m;
   var node = document.getElementById("status"), text = document.getElementById("statusText");
 
+  var brief;
   if (today && mins >= today[0] * 60 && mins < today[1] * 60) {
     node.setAttribute("data-open", "true");
     text.textContent = "Open now until " + (LABEL[now.d] || fmt(today[1]));
+    brief = "Open until " + (LABEL[now.d] || fmt(today[1]));
   } else if (today && mins < today[0] * 60) {
     text.textContent = "Opens today at " + fmt(today[0]);
+    brief = "Opens " + fmt(today[0]);
   } else {
     var i = 1, nd;
     while (i <= 7) { nd = (now.d + i) % 7; if (HOURS[nd]) break; i++; }
     text.textContent = HOURS[nd]
       ? "Closed. Opens " + DAYS[nd] + " " + fmt(HOURS[nd][0])
       : "Wednesday to Sunday";
+    brief = HOURS[nd]
+      ? "Opens " + SHORT[nd] + " " + fmt(HOURS[nd][0])
+      : "Wed to Sun";
+  }
+
+  /* The sticky bar shows the same live line. */
+  var node2 = document.getElementById("status2"), text2 = document.getElementById("statusText2");
+  if (node2) {
+    text2.textContent = brief;
+    node2.setAttribute("data-open", node.getAttribute("data-open"));
+  }
+
+  /* Booking bar appears once the hero is behind you, so there is never a second
+     blue pill competing with the one in the hero. */
+  var bar = document.getElementById("bookbar"), hero = document.querySelector(".hero");
+  if (bar && hero && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (e) {
+      bar.classList.toggle("is-on", !e[0].isIntersecting);
+    }, { threshold: 0 }).observe(hero);
   }
 
   document.getElementById("yr").textContent = new Date().getFullYear();

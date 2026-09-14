@@ -296,6 +296,37 @@ Three things a reviewer might expect to have changed and did not:
    confirm list. The sentence that explained it underneath is gone — the heading
    already said it.
 
+## MOBILE — iPhone Pro / Pro Max
+
+**The black band under the status bar was `theme-color`.** iOS Safari paints the status
+bar area with that meta value. It was `#0E0F12`, the page ground. The thing actually
+sitting under the status bar is the top of the hero photograph, which composites to
+`#281C17` — warmer and lighter. `theme-color` is now `#281C17`, measured off a render at
+393×852, and the seam is gone (top strip reads `#271B17`).
+
+**The hero fills the viewport.** It was `88svh`, which left ~100px of the next section
+showing under Safari's floating toolbar — a broken-looking fold rather than a deliberate
+one. It is `100svh` now: 852px on a 15 Pro, 932px on a Pro Max, exactly.
+
+**Safe areas.** `.wrap` pads to `max(--gut, env(safe-area-inset-left/right))` so landscape
+on a notched phone never runs text under the notch. The hero rail and the booking bar
+both add `env(safe-area-inset-bottom)` to clear the home indicator.
+
+## STICKY BOOKING BAR
+
+Below 720px, booking moves to the thumb zone.
+
+- **The header button is hidden below 720px.** There is never more than one blue pill on
+  screen: the hero carries its own, and the bar takes over once the hero is out of view
+  (IntersectionObserver on `.hero`, not a scroll listener).
+- It carries the **live open/closed line** in a short form computed alongside the long one
+  — `Opens Wed 4pm`, `Open until 10pm` — so the bar is worth its 67px rather than being a
+  floating button.
+- `visibility:hidden` while off, so it is out of the tab order until it is actually there.
+- Transition is zeroed under `prefers-reduced-motion`.
+- The footer gains `92px + safe-area` of bottom padding below 720px. Measured clearance
+  between the last legal line and the bar: **25px**.
+
 ## MOBILE — the drinks are no longer in the way
 
 At 390px the menu section used to be 4,371px of an 8,485px page: every cocktail, beer
