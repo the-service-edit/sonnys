@@ -48,8 +48,8 @@ venue. Every one is on the page — get a yes from Sonny's before it goes live.
 
 | # | Claim on the page | Source | Action |
 |---|---|---|---|
-| 1 | "The name comes from a rescue greyhound" | WA Good Food Guide | Confirm, or cut the line — it now sits as a small aside, not a headline |
-| 2 | Head chef **Sofika Boulton** | Both | Confirm still current |
+| 1 | "Sonny was a rescue greyhound" | WA Good Food Guide | Confirm, or cut it — it now sits beside the dog bowls, where it earns its place |
+| 2 | **Sofika Boulton, head chef and owner** | You told me the owner part; my sources only had "head chef" | Confirm the ownership before this is public — it's on the page and in the schema |
 | 3 | Wheelchair accessible | WAGFG listing | Confirm |
 | 4 | Dog friendly outside, bowls at the door | WAGFG listing | Confirm |
 | 5 | Outdoor seating out front | Photo + WAGFG | Confirm |
@@ -114,30 +114,52 @@ the last third-party dependency. Source IDs:
 
 Full URL: `https://static.wixstatic.com/media/<ID>/v1/fill/w_W,h_H,al_c,q_80,enc_auto/<ID>`
 
-## ⚠ THE VISIT UNDERLAY IS TUNED BLIND
+## THE MENU IS A WEEKLY DELIVERABLE
+
+The Menu section now leads with **"This week's menu."** and carries a dated line
+underneath: *It changes every week — this is what's on now. Updated 14 September 2026.*
+
+That date is the whole point — it visibly goes stale, which is what makes a weekly
+update something the client can see they're paying for. **It must be changed every time
+the menu is.** One edit, two places, both in the Menu section:
+
+```html
+Updated <time id="menuUpdated" datetime="2026-09-14">14 September 2026</time>
+```
+
+`datetime` is machine-readable (keep it `YYYY-MM-DD`), the text is what people see.
+If the retainer doesn't happen, delete the whole sentence — a stale date is worse than
+no date.
+
+## MENU CAPITALISATION — the rule
+
+One rule across all three lists, so it reads as considered rather than inconsistent:
+
+- **Dishes and ingredients stay lowercase**, matching their printed card's house style.
+- **Proper nouns are capitalised**: Great Southern, La Delizia, Goolwa, Basque,
+  Cambray Farm, Republic of Fremantle, Campari, Nixta, Thai basil, T-bone.
+- **Drinks brands are Title Case, never caps-lock**: `CAPI` → Capi,
+  `STRANGELOVE` → StrangeLove. XPA stays capitalised (it's a style, not a word).
+
+If Sonny's want the list reproduced exactly as printed — all lowercase, shouty brands
+and all — it's a find-and-replace, but the page will look less deliberate.
+
+## THE VISIT UNDERLAY
 
 The exterior shot now sits behind the whole Visit section instead of below it.
-**I could not fetch that photo to check the result** — it lives on Sonny's Wix CDN and
-this sandbox has no egress to it, so every render I did shows the section with the
-image missing. The treatment is set from contrast maths, not from looking at it:
+The underlay is now the **blue sign on the stone wall**, self-hosted, and it was tuned
+against the real file rather than blind. The image is cropped so the sign lands about
+72% down the frame, which puts it in the clean band below the copy — the section reads
+as: here's where we are, and here's the sign you're looking for.
 
-```
-filter: brightness(.72) contrast(.62) saturate(.55)   /* lifts the dark facade */
-scrim:  .80 → .66 → .82 vertical gradient
-```
+The scrim is shaped around the text rather than applied evenly: solid through the
+heading and the three columns, then it opens right up underneath. Measured against the
+actual photograph, every one of the 28 text elements in that section clears 4.5:1, and
+nothing in the section runs below 70% opacity for that reason.
 
-Open it on your machine. Two things to judge:
-
-1. **Is the building actually visible?** The contrast is deliberately compressed to lift
-   a dark facade into view without blowing out the sky. If it reads as a flat dark field,
-   raise `contrast()` toward `.75` and drop the mid scrim stop toward `.58`.
-2. **Does the text still hold?** Against a pure-white test image the underlay peaks at
-   grey 66 against a budget of 74, so bone-70 text stays at 4.5:1 — but that's the
-   worst case, not the real one. In this section nothing drops below 70% opacity for
-   exactly this reason (`.sect--bg` overrides the faint greys).
-
-Send me the exterior photo and I'll dial it in properly. Worth noting it's only
-1366×768 — thin for a full-bleed background. A reshoot of the frontage is the real fix.
+If the crop ever needs moving, it's one number: `object-position: center 62%`.
+The old 1366×768 exterior shot is no longer used anywhere — it was the weakest asset
+on the site.
 
 ## CTA SHAPE
 
