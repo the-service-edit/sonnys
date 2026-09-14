@@ -190,18 +190,24 @@ h1{display:flex;flex-direction:column;align-items:center;gap:clamp(20px,2.8vw,28
 .sect--bg{position:relative;isolation:isolate;overflow:hidden;padding-bottom:clamp(120px,15vw,210px)}
 .sect__bg{position:absolute;inset:0;z-index:-2}
 .sect__bg img{width:100%;height:100%;object-fit:cover;object-position:center 46%}
-/* On a phone the section is far taller than any photograph, so the ground becomes
-   a band at the foot of it rather than a crop zoomed into nothing. */
+/* A phone column is several times taller than this photograph, so covering the whole
+   section just zooms into nothing. It sits behind the top of the section instead, under
+   the heading, and fades out before the columns start. */
 @media(max-width:700px){
-  .sect--bg{padding-bottom:calc(min(60vw,250px) + 48px)}
-  .sect__bg{inset:auto 0 0 0;height:min(60vw,250px)}
-  /* No type sits on the band, so the plate can come back up to a real photograph. */
-  .sect__bg img{object-position:center 56%;filter:brightness(2.35) saturate(1.12) contrast(1.04)}
-  .sect--bg::before{background:linear-gradient(to bottom,
-    var(--ink) 0%,
-    var(--ink) calc(100% - min(60vw,250px)),
-    rgba(14,15,18,.22) calc(100% - min(60vw,250px) + 30px),
-    rgba(14,15,18,0) 100%)}
+  .sect--bg{padding-top:clamp(64px,16vw,96px)}
+  .sect__bg{inset:0 0 auto 0;height:min(88vw,370px);
+    -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 58%,transparent 100%);
+    mask-image:linear-gradient(to bottom,#000 0,#000 58%,transparent 100%)}
+  .sect__bg img{object-position:center 54%;filter:brightness(1.3) saturate(1.1)}
+  .sect--bg::before{
+    background:linear-gradient(to bottom,
+      rgba(14,15,18,.42) 0%,
+      rgba(14,15,18,.38) calc(min(88vw,370px) - 170px),
+      rgba(14,15,18,.55) min(88vw,370px),
+      var(--ink) calc(min(88vw,370px) + 40px),
+      var(--ink) 100%)}
+}
+}
 }
 .sect--bg::before{
   content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;

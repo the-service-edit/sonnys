@@ -181,10 +181,16 @@ bone-70 text needs 74, so the type clears 4.5:1 anywhere on it. Measured on the 
 plate: 30 text elements in that section, none over budget, brightest background under
 any text grey 61.
 
-**Two layouts, one image.** On desktop it is a full-section ground. On a phone the
-section is several times taller than any photograph, so any crop zooms into nothing —
-below 700px it becomes a **band at the foot of the section** instead, clear of the CTA,
-with the plate lifted by `brightness(2.35)` because no type sits on it there.
+**Two layouts, one image.** On desktop it is a full-section ground. A phone column is
+several times taller than the photograph, so covering the whole section just zooms into
+foliage — below 700px it sits behind the **top** of the section instead, under the
+heading and the address, at `min(88vw,370px)` tall, with a `mask-image` fading it out
+before the columns start so there is no hard edge.
+
+Mobile carries `brightness(1.3)`, and that number is load-bearing: the plate is capped
+at 64 so anything above about 1.15 combined with the scrim starts eating into the
+contrast budget. Measured at 390px: 30 text elements, none over budget, brightest
+background under any text grey 68 against 74. **Do not raise it without re-measuring.**
 
 **To swap the photo**, re-run the same treatment. A raw image dropped in will fail the
 way the first two attempts did. Shipped files: `assets/visit-960|1440|1920.webp|jpg`.
