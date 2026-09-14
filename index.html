@@ -187,6 +187,18 @@ h1{display:flex;flex-direction:column;align-items:center;gap:clamp(20px,2.8vw,28
 
 /* ---------- generic section ---------- */
 .sect{padding-block:var(--sect)}
+.sect--bg{position:relative;isolation:isolate;overflow:hidden;padding-bottom:clamp(120px,15vw,210px)}
+.sect__bg{position:absolute;inset:0;z-index:-2}
+.sect__bg img{width:100%;height:100%;object-fit:cover;object-position:center 46%}
+.sect--bg::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(to bottom,var(--ink) 0%,rgba(14,15,18,0) 14%,
+             rgba(14,15,18,0) 82%,rgba(14,15,18,.72) 95%,var(--ink) 100%);
+}
+/* Type sits on a photograph here, so nothing runs below 70% opacity. */
+.sect--bg .label,.sect--bg .vsmall,.sect--bg .hours dt{color:var(--bone-70)}
+.sect--bg .klist li::before{background:rgba(237,232,223,.5)}
+.sect--bg .vcol h3{border-bottom-color:rgba(237,232,223,.3)}
 .sect--band{background:var(--ink-2)}
 .sect__head{margin-bottom:clamp(34px,5vw,58px)}
 h2{
@@ -277,8 +289,7 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
 .klist li{position:relative;padding-left:18px;margin-bottom:7px}
 .klist li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:1px;background:var(--rule-2)}
 .visit__foot{margin-top:clamp(44px,6vw,76px);display:grid;gap:clamp(30px,4vw,46px)}
-.visit__shot .ph{aspect-ratio:16/9}
-@media(min-width:880px){.visit__shot .ph{aspect-ratio:2/1}}
+
 .visit__cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 40px}
 .visit__cta p{max-width:34ch;color:var(--bone-70);font-size:15px;margin-bottom:20px}
 
@@ -374,7 +385,7 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
             <h2 id="bar-h">Most of it's cooked over fire.</h2>
           </div>
           <p class="lead">
-            Head chef and owner <strong>Sofika Boulton</strong> cooks over the fire. Oysters,
+            Head chef and owner <strong>Sofika Boulton</strong> runs the kitchen. Oysters,
             cured kangaroo, a kilo of T-bone, whatever the market turned up.
           </p>
           <p class="lead">
@@ -519,7 +530,14 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
   </section>
 
   <!-- ============ VISIT ============ -->
-  <section class="sect" id="visit" aria-labelledby="visit-h" style="scroll-margin-top:92px">
+  <section class="sect sect--bg" id="visit" aria-labelledby="visit-h" style="scroll-margin-top:92px">
+    <div class="sect__bg" aria-hidden="true">
+      <picture>
+        <source type="image/webp" srcset="assets/visit-960.webp 960w, assets/visit-1440.webp 1440w, assets/visit-1920.webp 1920w" sizes="100vw">
+        <img loading="lazy" decoding="async" width="1365" height="679"
+          src="assets/visit-1440.jpg" srcset="assets/visit-960.jpg 960w, assets/visit-1440.jpg 1440w, assets/visit-1920.jpg 1920w" sizes="100vw" alt="">
+      </picture>
+    </div>
     <div class="wrap">
       <div class="sect__head">
         <p class="label">Visit</p>
@@ -571,18 +589,6 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
       </div>
 
       <div class="visit__foot">
-        <figure class="visit__shot">
-          <div class="ph">
-            <img loading="lazy" decoding="async" width="1366" height="683"
-              src="https://static.wixstatic.com/media/ebaa3f_304a3495242342abaee4a32da35b0f2e~mv2.png/v1/fill/w_1100,h_550,al_c,q_78,enc_auto/ebaa3f_304a3495242342abaee4a32da35b0f2e~mv2.png"
-              srcset="https://static.wixstatic.com/media/ebaa3f_304a3495242342abaee4a32da35b0f2e~mv2.png/v1/fill/w_760,h_380,al_c,q_78,enc_auto/ebaa3f_304a3495242342abaee4a32da35b0f2e~mv2.png 760w,
-                      https://static.wixstatic.com/media/ebaa3f_304a3495242342abaee4a32da35b0f2e~mv2.png/v1/fill/w_1100,h_550,al_c,q_78,enc_auto/ebaa3f_304a3495242342abaee4a32da35b0f2e~mv2.png 1100w,
-                      https://static.wixstatic.com/media/ebaa3f_304a3495242342abaee4a32da35b0f2e~mv2.png/v1/fill/w_1366,h_683,al_c,q_74,enc_auto/ebaa3f_304a3495242342abaee4a32da35b0f2e~mv2.png 1366w"
-              sizes="(min-width:1400px) 1280px, 94vw"
-              alt="The entrance to Sonny's on Hobart Street, Mount Hawthorn, with umbrellas out front under the gum trees.">
-          </div>
-        </figure>
-
         <div class="visit__cta">
           <p style="margin-bottom:0">Booking online is easiest. For bigger groups, send us an email.</p>
           <a class="btn" href="https://bookings.nowbookit.com/?accountid=17c2931e-c697-4687-94fd-19811abe4bb3&amp;venueid=8169&amp;theme=light&amp;colors=hex" rel="noopener">Book a table</a>

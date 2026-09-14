@@ -163,23 +163,30 @@ One rule across all three lists, so it reads as considered rather than inconsist
 If Sonny's want the list reproduced exactly as printed — all lowercase, shouty brands
 and all — it's a find-and-replace, but the page will look less deliberate.
 
-## THE VISIT PHOTO
+## THE VISIT UNDERLAY
 
-The exterior shot is back in the Visit section as a **full-width image**, sitting
-between the address/hours/contact columns and the Book a table row. As a background
-underlay it never worked (both that photo and the blue sign were tried and pulled);
-as a straight image it does its job, which is showing people the door they're
-looking for.
+The exterior photograph sits behind the whole Visit section. It works now because the
+image is **pre-treated, not CSS-filtered**. The source is desaturated to 86%, tinted
+toward the page ink, and tone-mapped so every pixel lands between grey 15 and grey 60:
 
-**It is only 1366x768.** Across a full-width 2:1 band that is roughly 1x on a normal
-screen and soft on a retina one. It is the weakest asset on the site and a reshoot of
-the frontage is the real fix. A dusk frame would suit this site far better than the
-bright daylight one they have.
+```
+LO, HI, GAMMA = 16/255, 62/255, 0.72     # in the build script, not the CSS
+```
 
-The blue sign on the stone is still the strongest single image Sonny's own. It belongs
-on their **Google Business Profile and as the social share card** rather than on the
-page. Say the word and I'll make it the Open Graph image in place of the hero. The
-derivatives are in `_unused/` if you want them.
+That band is narrow enough that bone-70 text clears 4.5:1 anywhere on it, and the gamma
+lift keeps local contrast, so the gums, the umbrellas, the doorway and the sign all still
+read. Measured against the real plate: 28 text elements in that section, none over
+budget, brightest background under any text is grey 61 against a budget of 74.
+
+The CSS now does almost nothing: a top and bottom fade so the band blends into the
+sections either side. There is no heavy scrim to tune.
+
+**To swap the photo**, re-run the same treatment on the new file rather than dropping a
+raw image in. A raw photo behind this text will fail. The originals live in
+`assets/visit-960|1440|1920.webp|jpg`; the untreated source is not in the repo.
+
+**Source is 1365x679.** Fine as a darkened ground, still thin for a full-bleed band on a
+retina screen. A dusk reshoot of the frontage remains the real fix.
 
 ## TYPOGRAPHY RULES
 
