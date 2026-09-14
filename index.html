@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <title>Sonny's — Wine Bar &amp; Wood Fire, Mount Hawthorn | Book a Table</title>
-<meta name="description" content="Sonny's is a neighbourhood wine bar and wood-fired kitchen at 126A Hobart St, Mount Hawthorn. Full menu online — shared plates off the fire, cocktails, leftfield wine, and a three-course Chef's Selection. Winner, Best Bar Dining, WA Good Food Guide 2025. Open Wednesday to Sunday. Book a table online.">
+<meta name="description" content="Sonny's is a small bar in Mount Hawthorn — a wood-fired kitchen, a long wine list and a cocktail menu that doesn't take itself seriously. Full food and drink menus, hours and bookings. 126A Hobart St. Winner, Best Bar Dining, WA Good Food Guide 2025. Open Wednesday to Sunday.">
 <link rel="canonical" href="https://www.sonnysbar.com.au/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="theme-color" content="#0E0F12">
@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en_AU">
 <meta property="og:site_name" content="Sonny's">
 <meta property="og:title" content="Sonny's — Wine Bar &amp; Wood Fire, Mount Hawthorn">
-<meta property="og:description" content="Shared plates off the fire, cocktails, leftfield wine by the glass. 126A Hobart St, Mount Hawthorn. Open Wednesday to Sunday.">
+<meta property="og:description" content="A small bar in Mount Hawthorn with a very good kitchen. Wood fire, long wine list, Wednesday to Sunday. 126A Hobart St.">
 <meta property="og:url" content="https://www.sonnysbar.com.au/">
 <meta property="og:image" content="https://www.sonnysbar.com.au/assets/og-sonnys.jpg">
 <meta property="og:image:width" content="1200">
@@ -26,7 +26,7 @@
 <meta property="og:image:alt" content="A candlelit table of shared plates and wine at Sonny's, Mount Hawthorn.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Sonny's — Wine Bar &amp; Wood Fire, Mount Hawthorn">
-<meta name="twitter:description" content="Shared plates off the fire, cocktails, leftfield wine by the glass. Open Wednesday to Sunday.">
+<meta name="twitter:description" content="A small bar in Mount Hawthorn with a very good kitchen. Wood fire, long wine list, Wednesday to Sunday.">
 <meta name="twitter:image" content="https://www.sonnysbar.com.au/assets/og-sonnys.jpg">
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -168,9 +168,11 @@ h1{display:flex;flex-direction:column;align-items:center;gap:clamp(20px,2.8vw,28
 .wm--hero{width:clamp(212px,37vw,462px);color:var(--bone)}
 .hero__line{
   font-family:var(--serif);font-weight:500;font-stretch:108%;
-  font-size:clamp(1.24rem,2.9vw,2.1rem);line-height:1.2;letter-spacing:-.018em;
-  max-width:22ch;text-wrap:balance;
+  font-size:clamp(1.2rem,2.7vw,1.95rem);line-height:1.24;letter-spacing:-.018em;
+  max-width:30ch;text-wrap:balance;
 }
+.hero__line .brk{display:none}
+@media(min-width:620px){.hero__line .brk{display:inline}}
 .hero__cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:clamp(30px,4.4vw,42px)}
 .hero__meta{display:flex;flex-wrap:wrap;justify-content:center;
   align-items:center;gap:6px 14px;font-size:13.5px;color:var(--bone-70)}
@@ -188,11 +190,12 @@ h1{display:flex;flex-direction:column;align-items:center;gap:clamp(20px,2.8vw,28
 .sect--bg{position:relative;isolation:isolate;overflow:hidden}
 .sect__bg{position:absolute;inset:0;z-index:-2}
 .sect__bg img{width:100%;height:100%;object-fit:cover;object-position:center 38%;
-  filter:brightness(.72) contrast(.62) saturate(.55)}
+  filter:brightness(.94) contrast(1.04) saturate(.78)}
 .sect--bg::before{
   content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:
-    linear-gradient(to bottom,var(--ink) 0%,rgba(14,15,18,.80) 13%,rgba(14,15,18,.66) 42%,rgba(14,15,18,.66) 74%,rgba(14,15,18,.82) 93%,var(--ink) 100%);
+    linear-gradient(to bottom,var(--ink) 0%,rgba(14,15,18,.88) 7%,rgba(14,15,18,.88) 58%,
+      rgba(14,15,18,.87) 65%,rgba(14,15,18,.58) 73%,rgba(14,15,18,.18) 84%,rgba(14,15,18,.15) 92%,rgba(14,15,18,.64) 98%,var(--ink) 100%);
 }
 /* Text sits on a photograph here, so nothing runs below 70% opacity. */
 .sect--bg .label,
@@ -289,10 +292,11 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
 .vsmall{margin-top:18px;font-size:13px;color:var(--bone-52);line-height:1.62}
 .klist li{position:relative;padding-left:18px;margin-bottom:7px}
 .klist li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:1px;background:var(--rule-2)}
+.sect--bg{padding-bottom:clamp(200px,26vw,360px)}
 .visit__foot{margin-top:clamp(44px,6vw,76px);display:grid;gap:clamp(30px,4vw,46px)}
 @media(min-width:880px){.visit__foot .ph{aspect-ratio:2.45/1 !important}}
 .visit__cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 40px}
-.visit__cta p{max-width:34ch;color:var(--bone-70);font-size:15px;margin-bottom:20px}
+.visit__cta p{max-width:34ch;color:var(--bone);font-size:15px;margin-bottom:20px}
 
 /* ---------- footer ---------- */
 .ftr{border-top:1px solid var(--rule);padding-block:clamp(52px,6vw,76px) 40px}
@@ -357,7 +361,7 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
     <div class="wrap hero__in">
       <h1 id="h1" class="rv">
         <svg class="wm wm--hero" viewBox="0 0 2080 458" role="img" aria-label="Sonny's"><use href="#wordmark"/></svg>
-        <span class="hero__line">Wine bar and wood fire in Mount Hawthorn.</span>
+        <span class="hero__line">A small bar in Mount Hawthorn<br class="brk"> with a very good kitchen.</span>
       </h1>
       <div class="hero__cta rv" style="--d:120ms">
         <a class="btn" href="https://bookings.nowbookit.com/?accountid=17c2931e-c697-4687-94fd-19811abe4bb3&amp;venueid=8169&amp;theme=light&amp;colors=hex" rel="noopener">Book a table</a>
@@ -384,17 +388,17 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
         <div class="bar__copy">
           <div class="sect__head" style="margin-bottom:26px">
             <p class="label rv">The bar</p>
-            <h2 id="bar-h" class="rv" style="--d:60ms">Everything comes off the fire.</h2>
+            <h2 id="bar-h" class="rv" style="--d:60ms">Most of it's cooked over fire.</h2>
           </div>
           <p class="lead rv" style="--d:110ms">
-            One wood fire at the centre of the kitchen. Snacks to go with the first glass,
-            plates built for the middle of the table, and a wine list that leans leftfield.
+            <strong>Sofika Boulton</strong> runs the kitchen. Oysters, cured kangaroo, a kilo of
+            T-bone, whatever the market turned up — written on the menu in four words, because
+            it doesn't need more.
           </p>
           <p class="lead rv" style="--d:160ms">
-            Head chef <strong>Sofika Boulton</strong> cooks over flame — the menu moves with the
-            season, the daily catch and whatever turns up at the markets.
+            The cocktail list is less restrained. So is the wine list, which gets from
+            Margaret River to Naoussa without much fuss.
           </p>
-          <p class="vsmall rv" style="--d:200ms">The name comes from a rescue greyhound.</p>
         </div>
 
         <div class="plates">
@@ -429,8 +433,8 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
   <section class="sect sect--band" id="menu" aria-labelledby="menu-h" style="scroll-margin-top:92px">
     <div class="wrap">
       <div class="sect__head">
-        <p class="label rv">Dining</p>
-        <h2 id="menu-h" class="rv" style="--d:60ms">The menu.</h2>
+        <p class="label rv">Menu</p>
+        <h2 id="menu-h" class="rv" style="--d:60ms">This is most of it.</h2>
       </div>
 
       <div class="menu__grid">
@@ -455,7 +459,7 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
           </ul>
           <p class="mset rv"><b>Three-course Chef's Selection</b> <span>75 per person</span></p>
           <div class="mnote rv">
-            <p>The menu moves with the season, the daily catch and the markets, so dishes change.</p>
+            <p>Dishes come and go. Instagram is usually more current than this page.</p>
             <a class="ilink" href="https://www.instagram.com/sonnys_mthawthorn/" rel="noopener">Latest on Instagram →</a>
           </div>
         </div>
@@ -523,7 +527,7 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
         </div>
         <div class="rv" style="--d:140ms">
           <h3>Wine</h3>
-          <p>A long, rotating list — sparkling, white, orange and red, leaning towards small growers and leftfield varieties, with a selection by the glass. Ask for the current list.</p>
+          <p>Too long for this page. Sparkling, white, orange and red, mostly small growers, plenty of it from WA. Ask for the list.</p>
         </div>
       </div>
 
@@ -561,12 +565,13 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
           <p style="margin-top:16px">
             <a href="https://www.google.com/maps/search/?api=1&amp;query=Sonny%27s%20126A%20Hobart%20St%20Mount%20Hawthorn%20WA%206016" rel="noopener">Open in Google Maps →</a>
           </p>
-          <p class="vsmall">Look for the black building under the gums.</p>
+          <p class="vsmall">Black building, big gums out front.</p>
           <ul class="klist" style="margin-top:22px">
             <li>Wheelchair accessible</li>
             <li>Outdoor seating out front</li>
-            <li>Dog friendly outside — bowls at the door</li>
+            <li>Dogs welcome out front, bowls at the door</li>
           </ul>
+          <p class="vsmall">Sonny was a rescue greyhound.</p>
         </div>
 
         <div class="vcol rv" style="--d:70ms">
@@ -595,7 +600,7 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
 
       <div class="visit__foot">
         <div class="visit__cta rv">
-          <p style="margin-bottom:0">Tables can be booked online for any service. Larger groups, email us.</p>
+          <p style="margin-bottom:0">Booking online is easiest. For bigger groups, send us an email.</p>
           <a class="btn" href="https://bookings.nowbookit.com/?accountid=17c2931e-c697-4687-94fd-19811abe4bb3&amp;venueid=8169&amp;theme=light&amp;colors=hex" rel="noopener">Book a table</a>
         </div>
       </div>
