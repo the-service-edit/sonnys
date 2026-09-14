@@ -253,7 +253,7 @@ h2{
   .plates figure:last-child{margin-top:clamp(40px,6vw,86px)}
 }
 .plates{display:grid;gap:18px}
-.plates figure:first-child .ph{aspect-ratio:4/5 !important}
+.plates figure:first-child .ph{aspect-ratio:1073/1341}
 .plates figure:last-child{width:70%;margin-left:auto}
 .plates figure:last-child .ph{aspect-ratio:4/5 !important}
 @media(min-width:620px){
@@ -451,8 +451,9 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
             <h2 id="bar-h">Most of it's cooked over fire.</h2>
           </div>
           <p class="lead">
-            Head chef and owner <strong>Sofika Boulton</strong> runs the kitchen. Oysters,
-            cured kangaroo, market fish off the grill, a kilo of beef T&#8209;bone.
+            Head chef and owner <strong>Sofika Boulton</strong> runs the kitchen. The bread is
+            baked in-house every day and finished over the fire. Oysters, cured kangaroo,
+            a kilo of beef T&#8209;bone.
           </p>
           <p class="lead">
             Sixteen cocktails, half of them on Republic of Fremantle spirits. The wine list is a
@@ -463,14 +464,16 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
 
         <div class="plates">
           <figure>
-            <div class="ph" style="aspect-ratio:1688/3000">
-              <img loading="lazy" decoding="async" width="1688" height="3000"
-                src="https://static.wixstatic.com/media/ebaa3f_56c5e098728a4288a6fc9ef02135eaa5~mv2.jpg/v1/fill/w_960,h_1706,al_c,q_78,enc_auto/ebaa3f_56c5e098728a4288a6fc9ef02135eaa5~mv2.jpg"
-                srcset="https://static.wixstatic.com/media/ebaa3f_56c5e098728a4288a6fc9ef02135eaa5~mv2.jpg/v1/fill/w_640,h_1137,al_c,q_78,enc_auto/ebaa3f_56c5e098728a4288a6fc9ef02135eaa5~mv2.jpg 640w,
-                        https://static.wixstatic.com/media/ebaa3f_56c5e098728a4288a6fc9ef02135eaa5~mv2.jpg/v1/fill/w_960,h_1706,al_c,q_78,enc_auto/ebaa3f_56c5e098728a4288a6fc9ef02135eaa5~mv2.jpg 960w,
-                        https://static.wixstatic.com/media/ebaa3f_56c5e098728a4288a6fc9ef02135eaa5~mv2.jpg/v1/fill/w_1400,h_2488,al_c,q_74,enc_auto/ebaa3f_56c5e098728a4288a6fc9ef02135eaa5~mv2.jpg 1400w"
-                sizes="(min-width:980px) 32vw, (min-width:620px) 46vw, 92vw"
-                alt="A window seat at Sonny's looking out to gum trees, with a lamp lit on the bar rail.">
+            <div class="ph">
+              <picture>
+                <source type="image/webp" srcset="assets/bread-560.webp 560w, assets/bread-840.webp 840w, assets/bread-1073.webp 1073w"
+                  sizes="(min-width:980px) 32vw, (min-width:620px) 46vw, 92vw">
+                <img loading="lazy" decoding="async" width="1073" height="1341"
+                  src="assets/bread-840.jpg"
+                  srcset="assets/bread-560.jpg 560w, assets/bread-840.jpg 840w, assets/bread-1073.jpg 1073w"
+                  sizes="(min-width:980px) 32vw, (min-width:620px) 46vw, 92vw"
+                  alt="A round loaf of Sonny's bread, blistered and charred in stripes from the grill and scattered with sea salt, on a floral plate beside a scoop of whipped butter.">
+              </picture>
             </div>
           </figure>
           <figure>

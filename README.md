@@ -78,6 +78,32 @@ not something Sonny's have ever said. There is now no wine claim on the page.
   It sits above a real award, which earns it, but it is still an opinion in their voice.
 - The weekly menu line assumes the weekly arrangement exists. It does not yet.
 
+## BREAD COPY — sourced from Sonny's own words
+
+*"The bread is baked in-house every day and finished over the fire."*
+
+That is not interpretation. It is Sonny's own Instagram caption (post of 2 September,
+`instagram.com/p/Dcxy07NAffO/`), which reads in full: **"chef's favourite thing to make
+— freshly baked in-house every day, finished over the fire and served warm with
+lemon-infused Great Southern Groves olive oil and whipped salted butter."** The venue's
+own words are the strongest source on this page.
+
+Left on the table, deliberately:
+
+- **"Famous" is not on the page.** The comments on that post include "Best bread in
+  Perth", which is why the framing has a basis, but a customer comment is not a
+  reputation claim you can publish. If Sonny's want it, they can say it themselves.
+- **The olive oil** (lemon-infused, Great Southern Groves) is a real and unusually
+  specific detail, and it is a producer name you could credit. Not used yet because the
+  printed menu you photographed says only "Barbecued bread / Whipped butter". Worth
+  asking which is current.
+
+## HOURS — a third source now disagrees
+
+Their Instagram bio says **"wed & thurs 4 - late / fri sat & sun 12 - late"**. The site
+uses the Contact page version (Wed–Thu 4–10pm, Fri–Sat 12–late, Sun 12–9pm). Sunday is
+the real conflict: 9pm on the site, "late" on Instagram. Add it to the list below.
+
 ## CONFIRM BEFORE LAUNCH
 
 These came from third-party sources (WA Good Food Guide, Broadsheet), not from the
@@ -182,10 +208,20 @@ down into the menu, where they sit level with the dessert rows in the list besid
 Neither was true before: the fire was an arbitrary pause between the food and the
 cocktails, and the desserts were illustrating a sentence about the kitchen.
 
+**The bread replaced the window seat** in that section. It is the dish the heading is
+about, it is self-hosted (`assets/bread-560|840|1073.webp|jpg`, 4:5), and its near-black
+table blends into the ink ground so the loaf reads as if it is floating. The blue rim of
+the table also happens to sit right next to the brand blue.
+
+The room now has no photograph. If you want one back, `ebaa3f_349e22161c1a4e4c9e42edf24017baf7~mv2.jpg`
+("Sonny's-3.jpg", on their gift-card page) is the interior with the **BREAK BREAD NOT
+HEARTS** mural painted on the wall, which is where the footer line comes from. It is a
+better room shot than the window seat was. Not added: five photographs is already enough.
+
 | Photograph | Job |
 |---|---|
 | Blurred dinner table | The feeling of an evening. Hero. |
-| Window seat | What it is like to sit in the actual room. |
+| Barbecued bread | The signature dish, charred over the fire, beside the sentence about it. Self-hosted. |
 | Wood fire | The cooking method, next to the sentence about it. |
 | Desserts | The dessert end of the food list, beside it. |
 | Exterior | Recognising the place from the street. |
@@ -196,7 +232,6 @@ They're below the fold and lazy-loaded, so the cost is low — but **before laun
 pull them down and self-host them alongside the hero for consistency and to remove
 the last third-party dependency. Source IDs:
 
-- window seat `ebaa3f_56c5e098728a4288a6fc9ef02135eaa5~mv2.jpg` (1688×3000)
 - wood fire `ebaa3f_5470044fb8f54945aaf292906292e9f3~mv2.jpg` (1125×2000)
 - desserts `ebaa3f_e133b4cb899d4bb4b7b8c71251ac7c26~mv2.png` (2748×1912)
 - wordmark `ebaa3f_509e59dc3caf4f5d974daf21a055a48e~mv2.png` (schema only)
