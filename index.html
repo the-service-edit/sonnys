@@ -190,6 +190,19 @@ h1{display:flex;flex-direction:column;align-items:center;gap:clamp(20px,2.8vw,28
 .sect--bg{position:relative;isolation:isolate;overflow:hidden;padding-bottom:clamp(120px,15vw,210px)}
 .sect__bg{position:absolute;inset:0;z-index:-2}
 .sect__bg img{width:100%;height:100%;object-fit:cover;object-position:center 46%}
+/* On a phone the section is far taller than any photograph, so the ground becomes
+   a band at the foot of it rather than a crop zoomed into nothing. */
+@media(max-width:700px){
+  .sect--bg{padding-bottom:calc(min(60vw,250px) + 48px)}
+  .sect__bg{inset:auto 0 0 0;height:min(60vw,250px)}
+  /* No type sits on the band, so the plate can come back up to a real photograph. */
+  .sect__bg img{object-position:center 56%;filter:brightness(2.35) saturate(1.12) contrast(1.04)}
+  .sect--bg::before{background:linear-gradient(to bottom,
+    var(--ink) 0%,
+    var(--ink) calc(100% - min(60vw,250px)),
+    rgba(14,15,18,.22) calc(100% - min(60vw,250px) + 30px),
+    rgba(14,15,18,0) 100%)}
+}
 .sect--bg::before{
   content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:linear-gradient(to bottom,var(--ink) 0%,rgba(14,15,18,0) 14%,
@@ -428,8 +441,8 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
       <div class="sect__head">
         <p class="label">Menu</p>
         <h2 id="menu-h">This week's menu.</h2>
-        <p class="lead" style="margin-top:18px">It changes every week, so this is what's
-        on now. Updated <time id="menuUpdated" datetime="2026-09-14">14 September 2026</time>.</p>
+        <p class="lead" style="margin-top:18px">It changes every week, so next week this
+        will be something else. Updated <time id="menuUpdated" datetime="2026-09-14">14 September 2026</time>.</p>
       </div>
 
       <div class="menu__grid">
@@ -533,9 +546,12 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
   <section class="sect sect--bg" id="visit" aria-labelledby="visit-h" style="scroll-margin-top:92px">
     <div class="sect__bg" aria-hidden="true">
       <picture>
-        <source type="image/webp" srcset="assets/visit-960.webp 960w, assets/visit-1440.webp 1440w, assets/visit-1920.webp 1920w" sizes="100vw">
+        <source type="image/webp"
+          srcset="assets/visit-960.webp 960w, assets/visit-1440.webp 1440w, assets/visit-1920.webp 1920w" sizes="100vw">
         <img loading="lazy" decoding="async" width="1365" height="679"
-          src="assets/visit-1440.jpg" srcset="assets/visit-960.jpg 960w, assets/visit-1440.jpg 1440w, assets/visit-1920.jpg 1920w" sizes="100vw" alt="">
+          src="assets/visit-1440.jpg"
+          srcset="assets/visit-960.jpg 960w, assets/visit-1440.jpg 1440w, assets/visit-1920.jpg 1920w"
+          sizes="100vw" alt="">
       </picture>
     </div>
     <div class="wrap">

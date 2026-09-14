@@ -165,28 +165,31 @@ and all — it's a find-and-replace, but the page will look less deliberate.
 
 ## THE VISIT UNDERLAY
 
-The exterior photograph sits behind the whole Visit section. It works now because the
-image is **pre-treated, not CSS-filtered**. The source is desaturated to 86%, tinted
-toward the page ink, and tone-mapped so every pixel lands between grey 15 and grey 60:
+The exterior photograph sits behind the Visit section. It works because the image is
+**pre-treated in the build, not filtered by CSS at runtime**. Luminance is compressed
+into grey 20-64 while hue and chroma are preserved, then chroma is pushed back up,
+so it reads as a dusk-graded colour photo rather than a washed-out grey one:
 
 ```
-LO, HI, GAMMA = 16/255, 62/255, 0.72     # in the build script, not the CSS
+LO, HI, GAMMA, SAT = 20, 64, 0.66, 1.18
+# RGB scaled by the luminance ratio -> hue survives, luminance is exact
+# chroma boost tapers in the darkest areas so shadow noise doesn't go neon
 ```
 
-That band is narrow enough that bone-70 text clears 4.5:1 anywhere on it, and the gamma
-lift keeps local contrast, so the gums, the umbrellas, the doorway and the sign all still
-read. Measured against the real plate: 28 text elements in that section, none over
-budget, brightest background under any text is grey 61 against a budget of 74.
+That cap is a proof, not a sample: no pixel can exceed luminance-equivalent 64, and
+bone-70 text needs 74, so the type clears 4.5:1 anywhere on it. Measured on the real
+plate: 30 text elements in that section, none over budget, brightest background under
+any text grey 61.
 
-The CSS now does almost nothing: a top and bottom fade so the band blends into the
-sections either side. There is no heavy scrim to tune.
+**Two layouts, one image.** On desktop it is a full-section ground. On a phone the
+section is several times taller than any photograph, so any crop zooms into nothing —
+below 700px it becomes a **band at the foot of the section** instead, clear of the CTA,
+with the plate lifted by `brightness(2.35)` because no type sits on it there.
 
-**To swap the photo**, re-run the same treatment on the new file rather than dropping a
-raw image in. A raw photo behind this text will fail. The originals live in
-`assets/visit-960|1440|1920.webp|jpg`; the untreated source is not in the repo.
+**To swap the photo**, re-run the same treatment. A raw image dropped in will fail the
+way the first two attempts did. Shipped files: `assets/visit-960|1440|1920.webp|jpg`.
 
-**Source is 1365x679.** Fine as a darkened ground, still thin for a full-bleed band on a
-retina screen. A dusk reshoot of the frontage remains the real fix.
+**Source is 1365x679.** A dusk reshoot of the frontage is still the real fix.
 
 ## TYPOGRAPHY RULES
 
