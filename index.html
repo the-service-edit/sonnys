@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://www.sonnysbar.com.au/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="theme-color" content="#281C17">
-<meta name="msapplication-TileColor" content="#0058E2">
+<meta name="msapplication-TileColor" content="#223E99">
 <meta name="color-scheme" content="dark">
 <meta name="geo.region" content="AU-WA">
 <meta name="geo.placename" content="Mount Hawthorn, Western Australia">
@@ -33,7 +33,7 @@
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="assets/favicon-16.png" sizes="16x16" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180">
-<link rel="mask-icon" href="assets/mask-icon.svg" color="#0058E2">
+<link rel="mask-icon" href="assets/mask-icon.svg" color="#223E99">
 
 <link rel="preconnect" href="https://static.wixstatic.com" crossorigin>
 <link rel="preload" href="fonts/anybody-variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -64,9 +64,9 @@
   --bone-52:rgba(237,232,223,.52);
   --rule:rgba(237,232,223,.15);
   --rule-2:rgba(237,232,223,.30);
-  --blue:#0058E2;            /* brand blue, sampled from the wordmark */
-  --blue-lift:#1668F0;       /* hover */
-  --blue-bright:#2E79FF;     /* small accents on ink, 4.8:1 */
+  --blue:#223E99;            /* brand blue. Bone on it measures 7.76:1 */
+  --blue-lift:#294CBA;       /* hover, 6.07:1 */
+  --blue-bright:#5979E4;     /* small accents on ink, 4.82:1 */
 
   --radius:999px;          /* echoes the round bowls in the wordmark */
   --gut:clamp(20px,5.2vw,72px);
@@ -194,7 +194,7 @@ h1{display:flex;flex-direction:column;align-items:center;gap:clamp(20px,2.8vw,28
 .hero__award{font-size:13px;line-height:1.5;letter-spacing:.005em;color:var(--bone-70)}
 .status{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;color:var(--bone)}
 .status__dot{width:6px;height:6px;border-radius:50%;background:var(--bone-52);flex:none}
-.status[data-open="true"] .status__dot{background:var(--blue-bright);box-shadow:0 0 0 3px rgba(46,121,255,.22)}
+.status[data-open="true"] .status__dot{background:var(--blue-bright);box-shadow:0 0 0 3px rgba(89,121,228,.22)}
 
 /* ---------- sticky booking bar (phones) ---------- */
 /* Exactly one booking action on screen at a time: below 720px the header button steps
@@ -227,7 +227,12 @@ h1{display:flex;flex-direction:column;align-items:center;gap:clamp(20px,2.8vw,28
 .exterior{width:100vw;margin-inline:calc(50% - 50vw);
   margin-block:clamp(26px,3.4vw,40px) clamp(38px,5vw,60px)}
 .exterior .ph{aspect-ratio:1042/1421}
-@media(min-width:700px){.exterior .ph{aspect-ratio:1920/655}}
+/* An explicit height, not a capped aspect-ratio: a max-height on an aspect-ratio box
+   shrinks the width with it and the full bleed is lost. object-fit does the cropping. */
+@media(min-width:700px){
+  .exterior .ph{aspect-ratio:auto;height:clamp(400px,42vw,620px)}
+  .exterior .ph img{object-position:center 62%}
+}
 
 .sect--band{background:var(--ink-2)}
 .sect__head{margin-bottom:clamp(34px,5vw,58px)}
@@ -488,6 +493,8 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
     <div class="wrap">
       <div class="sect__head">
         <h2 id="menu-h">This week's menu.</h2>
+        <p class="lead" style="margin-top:16px">It changes every week, so if something here
+        is the reason you're coming, come this week.</p>
       </div>
 
       <div class="menu__grid">
@@ -617,10 +624,10 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
             <source media="(max-width:699px)"
               srcset="assets/visit-street-520.jpg 520w, assets/visit-street-780.jpg 780w, assets/visit-street-1042.jpg 1042w" sizes="100vw">
             <source type="image/webp"
-              srcset="assets/visit-wide-960.webp 960w, assets/visit-wide-1440.webp 1440w, assets/visit-wide-1920.webp 1920w" sizes="100vw">
-            <img loading="lazy" decoding="async" width="1920" height="655"
+              srcset="assets/visit-wide-960.webp 960w, assets/visit-wide-1440.webp 1440w, assets/visit-wide-1774.webp 1774w" sizes="100vw">
+            <img loading="lazy" decoding="async" width="1774" height="887"
               src="assets/visit-wide-1440.jpg"
-              srcset="assets/visit-wide-960.jpg 960w, assets/visit-wide-1440.jpg 1440w, assets/visit-wide-1920.jpg 1920w"
+              srcset="assets/visit-wide-960.jpg 960w, assets/visit-wide-1440.jpg 1440w, assets/visit-wide-1774.jpg 1774w"
               sizes="100vw"
               alt="The front of Sonny's on Hobart Street: umbrella tables busy under the gum trees, with the stone frontage and the blue Sonny's sign beside the entrance.">
           </picture>

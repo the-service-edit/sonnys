@@ -132,9 +132,32 @@ venue. Every one is on the page — get a yes from Sonny's before it goes live.
 
 ## BRAND
 
-- **Blue is `#0058E2`** — sampled directly from the wordmark file you sent. It carries
-  the primary CTAs, hover states and the open-now dot. Bone on blue measures 4.93:1,
-  so button text passes AA.
+- **Blue is `#223E99`** (your choice, replacing the sampled `#0058E2`). It carries the
+  primary CTAs, hover states and the open-now dot. Three tokens, all measured:
+
+  | Token | Value | Where | Contrast |
+  |---|---|---|---|
+  | `--blue` | `#223E99` | Button fills | Bone on it **7.76:1** (AAA) |
+  | `--blue-lift` | `#294CBA` | Button hover | Bone on it **6.07:1** |
+  | `--blue-bright` | `#5979E4` | Link hover, open-now dot | On ink **4.82:1**, on the menu band **4.55:1** |
+
+  The lift and the accent are computed at the brand hue (226°), not eyeballed: the accent
+  is the lowest lightness at that hue that still clears 4.8:1 on the ink ground. The old
+  palette measured 4.93:1 on the button, so this is a genuine accessibility gain as well
+  as a calmer one against the candlelit photography.
+
+  **It also sits closer to the real sign.** Sampled off the new frontage photograph, the
+  SONNYS lettering reads `#122947` in shade. That is darker than any brand value (it is
+  shadow, not paint), but `#223E99` is nearer to it than `#0058E2` was.
+
+  Changed with it: `msapplication-TileColor`, the `mask-icon` colour, the open-now dot
+  glow, `assets/favicon.svg`, `assets/wordmark-s.svg`, and the three PNG icons
+  (re-rasterised from the SVG at 16 / 32 / 180, not recoloured pixel by pixel).
+
+  **Not changed:** the `accent=33,15,243` parameter on the Nowbookit gift-card URL. That
+  came from the original Wix site, does not match either brand blue, and it is a
+  third-party widget parameter. Worth asking Nowbookit what format it expects before
+  touching it.
 - **The wordmark is now an inline SVG**, traced from your file and drawn once as a
   `<symbol>`, then referenced three times (header, hero, footer). ~3KB, crisp at any
   size, and it takes its colour from `currentColor` — so it can be bone on dark or
@@ -225,22 +248,20 @@ has to be compromised for the other.
 | Width | File | Ratio | Shows |
 |---|---|---|---|
 | under 700px | `assets/visit-street-520\|780\|1042.webp\|jpg` | 1042:1421 | The frontage you sent: gum tree, umbrella tables in use, the window |
-| 700px and up | `assets/visit-wide-960\|1440\|1920.webp\|jpg` | 1920:655 | The whole frontage: umbrellas, stone, the blue sign, the entrance |
+| 700px and up | `assets/visit-wide-960\|1440\|1774.webp\|jpg` | 1774:887 | The whole frontage: umbrellas, stone, the blue sign, the entrance |
 
-**The wide frame was recovered, not sourced.** The only copy of that photograph left in
-the project was the tone-mapped one. The treatment is invertible, so it was inverted:
-undo the chroma taper, undo the luminance compression, assume the original spanned the
-full range. The sign, the stone and the doorway all came back. But it was reconstructed
-from a file with roughly 44 luminance levels, so the sky is blown and the dark upper
-box is blocky. **It holds up at a band that size and it should still be replaced.**
+**Both frames are now real photographs.** The wide band was briefly a reconstruction
+(the only copy left in the project had been tone-mapped, so the treatment was inverted
+to recover it). That is retired: the 1774×887 original replaced it.
 
-**What to ask for:** the wide frame is still the reconstruction. A second frame with both
-the umbrella tables and the blue sign in one portrait crop would let mobile and desktop
-run the same real photograph and retire the recovery entirely.
+**The wide band uses an explicit height, not an aspect ratio.** `height:clamp(400px,42vw,620px)`
+with `object-fit:cover` and `object-position:center 62%`. A `max-height` on an
+`aspect-ratio` box shrinks the width along with it and the full bleed is lost. The 62%
+keeps the sign, the entrance and the umbrellas and trims sky instead.
 
-The mobile frame is fine: 1042×1510 source, trimmed 5.9% off the top to match the
-framing already signed off, served at 520 / 780 / 1042. A Pro Max at 3x renders it at
-430×586 from the 1042 candidate.
+Mobile source is 1042×1510, trimmed 5.9% off the top to match the framing already signed
+off, served at 520 / 780 / 1042. A Pro Max at 3x renders it at 430×586 from the 1042
+candidate. Desktop source is 1774×887, served at 960 / 1440 / 1774.
 
 **"Look for the blue sign on the stone"** is now a wayfinding line in the Address column
 rather than a caption, because the mobile frame does not show the sign and a caption
@@ -296,8 +317,10 @@ Three things a reviewer might expect to have changed and did not:
    your venue and your call, and it has not been reinstated.
 3. **"This week's menu."** Kept because you want the weekly framing to support a
    retainer. It is still an arrangement that does not exist yet, so it stays on the
-   confirm list. The sentence that explained it underneath is gone — the heading
-   already said it.
+   confirm list. The line underneath is back at your request, but rewritten: the old
+   one only restated the heading. It now ends on a reason to book —
+   *"It changes every week, so if something here is the reason you're coming, come
+   this week."* The fabricated "Updated \<date\>" is still gone and should stay gone.
 
 ## MOBILE — iPhone Pro / Pro Max
 
