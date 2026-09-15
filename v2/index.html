@@ -352,15 +352,26 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
 /* ---------- footer ---------- */
 /* Visit and the footer were one unbroken block of the darkest tone. The footer takes the
    band colour so the page ends on a change of ground rather than more of the same. */
-.ftr{background:var(--ink-2);border-top:1px solid var(--rule);padding-block:clamp(52px,6vw,76px) 40px}
-.ftr__top{display:grid;gap:34px;align-items:start}
+.ftr{background:var(--ink-2);border-top:1px solid var(--rule);padding-block:0 40px}
+/* Both marks keep their real colours, so they need a light ground. Full bleed, at the
+   top of the footer. Blue on bone 7.76:1, burgundy on bone 10.10:1. */
+.vbar{width:100vw;margin-inline:calc(50% - 50vw);background:var(--bone);
+  padding-block:clamp(26px,3.4vw,40px) calc(clamp(26px,3.4vw,40px) + 22px)}
+.vbar__in{max-width:var(--max);margin-inline:auto;
+  padding-left:max(var(--gut),env(safe-area-inset-left,0px));
+  padding-right:max(var(--gut),env(safe-area-inset-right,0px));
+  display:flex;flex-wrap:wrap;align-items:center;gap:clamp(26px,5vw,66px)}
+.vbar__s{display:block;width:clamp(148px,17vw,196px);color:var(--blue)}
+.vbar__l{position:relative;display:block}
+.vbar__l img{display:block;width:clamp(112px,13vw,150px);height:auto}
+/* Out of flow, so the two marks centre on each other rather than on the label. */
+.vbar__note{position:absolute;top:calc(100% + 10px);left:0;margin:0;white-space:nowrap;
+  font-size:11px;font-weight:600;font-stretch:94%;
+  letter-spacing:.19em;text-transform:uppercase;color:#5E5B57}
+.ftr__top{display:grid;gap:34px;align-items:start;padding-top:clamp(40px,5vw,62px)}
 @media(min-width:820px){.ftr__top{grid-template-columns:minmax(0,1fr) auto;gap:48px}}
-/* The wordmark in brand blue measures 1.91:1 straight on the footer, which is invisible.
-   On bone it is 7.76:1, and blue-on-light is how the real sign and the favicon work. */
-.ftr__brand{display:inline-block;background:var(--bone);padding:15px 19px;border-radius:6px}
-.ftr__mark{width:126px;color:var(--blue);display:block}
 .ftr__line{font-weight:500;font-stretch:104%;font-size:clamp(1.02rem,1.5vw,1.18rem);
-  letter-spacing:-.012em;color:var(--bone-70);margin-top:20px}
+  letter-spacing:-.012em;color:var(--bone-70)}
 .ftr__nav{display:flex;flex-wrap:wrap;gap:14px 26px}
 .ftr__nav a{display:inline-block;padding-block:6px;font-size:13px;color:var(--bone-70);transition:color .25s var(--ease)}
 .ftr__nav a:hover{color:var(--blue-bright)}
@@ -369,22 +380,6 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
   display:grid;gap:20px;font-size:12px;line-height:1.72;color:var(--bone-52);max-width:74ch}
 .legal p:first-child{color:var(--bone-70)}
 
-/* A sibling venue, so it is a note in the footer rather than a section of its own. */
-.lyla{margin-top:clamp(40px,5vw,58px);padding-top:28px;border-top:1px solid var(--rule)}
-/* The Bar Lyla mark is burgundy: 1.47:1 on this footer, 10.10:1 on bone. It takes the
-   same plaque as the Sonny's wordmark above it, so the two venues read as a pair. */
-.lyla{display:grid;gap:22px}
-@media(min-width:760px){
-  .lyla{grid-template-columns:minmax(0,270px) minmax(0,1fr);gap:clamp(28px,3.4vw,52px);align-items:center}
-}
-.lyla__mark{margin:0;padding:18px 22px;background:var(--bone);border-radius:6px;
-  justify-self:start;max-width:270px;width:100%;font-size:0}
-.lyla__mark img{width:100%;height:auto;display:block}
-.lyla p{margin-top:10px;font-size:14.5px;line-height:1.66;color:var(--bone-70);max-width:54ch}
-.lyla a{display:inline-block;margin-top:13px;font-size:13px;letter-spacing:.04em;color:var(--bone-70);
-  border-bottom:1px solid var(--rule-2);padding-bottom:4px;
-  transition:color .3s var(--ease),border-color .3s var(--ease)}
-.lyla a:hover{color:var(--blue-bright);border-bottom-color:var(--blue-bright)}
 .awards{margin-top:clamp(40px,5vw,58px);padding-top:28px;border-top:1px solid var(--rule)}
 .awards__list{margin-top:15px;display:flex;flex-direction:column;gap:9px}
 @media(min-width:640px){
@@ -718,9 +713,26 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
 
 <footer class="ftr">
   <div class="wrap">
+
+    <div class="vbar">
+      <div class="vbar__in">
+        <svg class="wm vbar__s" viewBox="0 0 2080 458" role="img" aria-label="Sonny's"><use href="#wordmark"/></svg>
+          <div class="vbar__l">
+            <a href="https://www.instagram.com/bar.lyla/" rel="noopener">
+            <picture>
+              <source type="image/webp" srcset="../assets/lyla-logo-300.webp 300w, ../assets/lyla-logo-600.webp 600w" sizes="150px">
+              <img loading="lazy" decoding="async" width="1404" height="928"
+                src="../assets/lyla-logo-300.png" srcset="../assets/lyla-logo-300.png 300w, ../assets/lyla-logo-600.png 600w"
+                sizes="150px" alt="Bar Lyla">
+            </picture>
+            </a>
+            <p class="vbar__note">Opening soon</p>
+          </div>
+      </div>
+    </div>
+
     <div class="ftr__top">
       <div>
-      <span class="ftr__brand"><svg class="wm ftr__mark" viewBox="0 0 2080 458" role="img" aria-label="Sonny's"><use href="#wordmark"/></svg></span>
       <p class="ftr__line">Break bread not hearts.</p>
       </div>
       <nav class="ftr__nav" aria-label="Footer">
@@ -728,25 +740,6 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
         <a href="#visit">Visit</a>
         <a href="https://bookings.nowbookit.com/?accountid=17c2931e-c697-4687-94fd-19811abe4bb3&amp;venueid=8169&amp;theme=light&amp;colors=hex" rel="noopener">Book a table</a>
       </nav>
-    </div>
-
-    <div class="lyla">
-      <h2 class="lyla__mark">
-        <picture>
-          <source type="image/webp" srcset="../assets/lyla-logo-300.webp 300w, ../assets/lyla-logo-600.webp 600w" sizes="(min-width:760px) 226px, 226px">
-          <img loading="lazy" decoding="async" width="1404" height="928"
-            src="../assets/lyla-logo-300.png"
-            srcset="../assets/lyla-logo-300.png 300w, ../assets/lyla-logo-600.png 600w"
-            sizes="(min-width:760px) 226px, 226px" alt="Bar Lyla">
-        </picture>
-      </h2>
-      <div>
-        <p class="label">Opening October</p>
-        <p>A two-minute walk away on Scarborough Beach Road, in the old La Madonna Nera
-        space. Drinks first, small plates, about fifteen wines by the glass. From Sofika
-        Boulton and Jess Blyth.</p>
-        <a href="https://www.instagram.com/bar.lyla/" rel="noopener">@bar.lyla</a>
-      </div>
     </div>
 
     <div class="awards">

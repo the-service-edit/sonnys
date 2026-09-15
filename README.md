@@ -21,8 +21,8 @@ Two live variants of the **current** site, differing only in the Bar Lyla footer
 
 | | URL | Bar Lyla block |
 |---|---|---|
-| **v1** | `/sonnys/v1/` | Type only: label, name, three lines, handle |
-| **v2** | `/sonnys/v2/` | The Bar Lyla logo on a bone plaque, copy beside it |
+| **v1** | `/sonnys/v1/` | Blue Sonny's wordmark on a small bone plaque, Bar Lyla as a type block |
+| **v2** | `/sonnys/v2/` | Full-bleed bone band with both marks side by side in their real colours, "Opening soon" under Bar Lyla. No Bar Lyla body copy |
 
 - **The root redirects to v2** (`meta refresh` + `location.replace`, with a visible link as
   fallback). `/sonnys/` is still the link to hand anyone; it lands on v2.
@@ -33,21 +33,30 @@ Two live variants of the **current** site, differing only in the Bar Lyla footer
   `/v1/`. It is still in git history (commit `9c8a4cc`, file `v1/index.html`) and a copy is
   in `_unused/original-index.html` if you ever want the before-and-after again.
 
+### The venue band (v2)
+
+Full-bleed bone strip at the top of the footer carrying both marks at their real colours:
+Sonny's blue `#223E99` and Bar Lyla burgundy `#6F021E`. Neither survives on the dark
+ground (1.91:1 and 1.47:1); on bone they are 7.76:1 and 10.10:1.
+
+- The band is `--bone`, the site's warm white, not `#FFF`. Pure white would be a cold
+  rectangle in a warm dark page. One token if you want it changed.
+- **"OPENING SOON" is positioned out of flow.** In flow it dragged the Sonny's wordmark
+  down, because the flex row was centring on the Bar Lyla block including its label rather
+  than on the mark. Absolute, so the two marks centre on each other.
+- `#5E5B57` on bone is 5.53:1.
+- **The Bar Lyla mark links to @bar.lyla.** The body copy came out, so the logo carries
+  the route. The venue name is still in the accessibility tree as the image's `alt`.
+- Sonny's 148–196px wide, Bar Lyla 112–150px. Both fit side by side down to 360px.
+- **"Opening soon" rather than "Opening October"** kills the staleness problem. It stays
+  true until the day they open, and then the band just loses the label.
+
 ### The Bar Lyla mark
 
 `assets/lyla-logo-300|600.png|webp`, transparent PNG trimmed to its bounding box, WebP
 with alpha alongside it. The mark is `#6F021E`.
 
-**It sits on a bone plaque, not straight on the footer.** Burgundy on `#14161A` measures
-**1.47:1**; on bone it is **10.10:1**. That is also the same plaque the Sonny's wordmark
-takes two blocks above, so the two venues read as a pair rather than as one venue and one
-stray graphic.
-
-The logo carries the venue name, so the text heading came out to avoid saying "Bar Lyla"
-twice in a row. The name is still the `<h2>` for the outline and still in the
-accessibility tree as the image's `alt`.
-
-**Still raster.** Ask Bar Lyla for the vector. At 226px on a 2x screen the 600px PNG is
+**Still raster.** Ask Bar Lyla for the vector. At 150px on a 2x screen the 600px PNG is
 fine, but an SVG would be smaller than the 17KB WebP and sharp at any size.
 
 ## ⚠ PRICE CONFLICT — RESOLVE FIRST
