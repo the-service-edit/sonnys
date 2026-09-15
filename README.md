@@ -17,21 +17,38 @@ together and it runs anywhere — GitHub Pages, Netlify, a folder on a desktop.
 
 ## VERSIONS
 
-Two builds are deployed, so you can compare them and say which one to change.
+Two live variants of the **current** site, differing only in the Bar Lyla footer block.
 
-| | URL | What it is |
+| | URL | Bar Lyla block |
 |---|---|---|
-| **v2** | `/sonnys/` | Current. The refinement pass: exterior as a full-bleed figure, drinks behind disclosures, Visit in the mobile nav, wine copy, photography reassigned. **This is the link to send anyone.** |
-| **v1** | `/sonnys/v1/` | Archived. The original build with the darkened exterior underlay, the full drinks list expanded, and the Chef's Selection capsule. |
+| **v1** | `/sonnys/v1/` | Type only: label, name, three lines, handle |
+| **v2** | `/sonnys/v2/` | The Bar Lyla logo on a bone plaque, copy beside it |
 
-- v2 lives at the repo root (`index.html`). v1 lives in `v1/index.html`.
-- Both share one copy of `assets/` and `fonts/` — v1's paths point up one level (`../assets/`).
-  If you delete an asset, check `v1/index.html` first.
-- **v1 is `noindex, nofollow`** and is blocked in `robots.txt`. Two near-identical pages
-  competing in search would cost you more than the comparison is worth.
-- Mobile page height, 390px: **v1 is 8,608px, v2 is 6,920px.**
-- Next time, archive the current root into `v3/` before overwriting it, and keep the root
-  as whatever is current.
+- **The root redirects to v2** (`meta refresh` + `location.replace`, with a visible link as
+  fallback). `/sonnys/` is still the link to hand anyone; it lands on v2.
+- **v1 is `noindex` and disallowed in `robots.txt`.** Two near-identical pages competing in
+  search costs more than the comparison is worth. v2 is the indexable one.
+- Both share one copy of `assets/` and `fonts/`; their paths point up one level.
+- **The original pre-redesign build has been retired** from the live site. It used to sit at
+  `/v1/`. It is still in git history (commit `9c8a4cc`, file `v1/index.html`) and a copy is
+  in `_unused/original-index.html` if you ever want the before-and-after again.
+
+### The Bar Lyla mark
+
+`assets/lyla-logo-300|600.png|webp`, transparent PNG trimmed to its bounding box, WebP
+with alpha alongside it. The mark is `#6F021E`.
+
+**It sits on a bone plaque, not straight on the footer.** Burgundy on `#14161A` measures
+**1.47:1**; on bone it is **10.10:1**. That is also the same plaque the Sonny's wordmark
+takes two blocks above, so the two venues read as a pair rather than as one venue and one
+stray graphic.
+
+The logo carries the venue name, so the text heading came out to avoid saying "Bar Lyla"
+twice in a row. The name is still the `<h2>` for the outline and still in the
+accessibility tree as the image's `alt`.
+
+**Still raster.** Ask Bar Lyla for the vector. At 226px on a 2x screen the 600px PNG is
+fine, but an SVG would be smaller than the 17KB WebP and sharp at any size.
 
 ## ⚠ PRICE CONFLICT — RESOLVE FIRST
 

@@ -7,7 +7,7 @@
 <title>Sonny's, Mount Hawthorn | Wine Bar &amp; Wood Fire | Book a Table</title>
 <meta name="description" content="Sonny's is a small bar in Mount Hawthorn with a wood-fired kitchen, a long wine list and a cocktail menu that doesn't take itself seriously. Full food and drink menus, hours and bookings. 126A Hobart St. Winner, Best Bar Dining, WA Good Food Guide 2025. Open Wednesday to Sunday.">
 <link rel="canonical" href="https://www.sonnysbar.com.au/">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="theme-color" content="#281C17">
 <meta name="msapplication-TileColor" content="#223E99">
 <meta name="color-scheme" content="dark">
@@ -371,8 +371,15 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
 
 /* A sibling venue, so it is a note in the footer rather than a section of its own. */
 .lyla{margin-top:clamp(40px,5vw,58px);padding-top:28px;border-top:1px solid var(--rule)}
-.lyla h2{font-family:var(--serif);font-weight:500;font-stretch:108%;margin-top:8px;
-  font-size:clamp(1.18rem,1.9vw,1.4rem);line-height:1.2;letter-spacing:-.018em;color:var(--bone);max-width:none}
+/* The Bar Lyla mark is burgundy: 1.47:1 on this footer, 10.10:1 on bone. It takes the
+   same plaque as the Sonny's wordmark above it, so the two venues read as a pair. */
+.lyla{display:grid;gap:22px}
+@media(min-width:760px){
+  .lyla{grid-template-columns:minmax(0,270px) minmax(0,1fr);gap:clamp(28px,3.4vw,52px);align-items:center}
+}
+.lyla__mark{margin:0;padding:18px 22px;background:var(--bone);border-radius:6px;
+  justify-self:start;max-width:270px;width:100%;font-size:0}
+.lyla__mark img{width:100%;height:auto;display:block}
 .lyla p{margin-top:10px;font-size:14.5px;line-height:1.66;color:var(--bone-70);max-width:54ch}
 .lyla a{display:inline-block;margin-top:13px;font-size:13px;letter-spacing:.04em;color:var(--bone-70);
   border-bottom:1px solid var(--rule-2);padding-bottom:4px;
@@ -724,12 +731,22 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
     </div>
 
     <div class="lyla">
-      <p class="label">Opening October</p>
-      <h2>Bar Lyla</h2>
-      <p>A two-minute walk away on Scarborough Beach Road, in the old La Madonna Nera
-      space. Drinks first, small plates, about fifteen wines by the glass. From Sofika
-      Boulton and Jess Blyth.</p>
-      <a href="https://www.instagram.com/bar.lyla/" rel="noopener">@bar.lyla</a>
+      <h2 class="lyla__mark">
+        <picture>
+          <source type="image/webp" srcset="../assets/lyla-logo-300.webp 300w, ../assets/lyla-logo-600.webp 600w" sizes="(min-width:760px) 226px, 226px">
+          <img loading="lazy" decoding="async" width="1404" height="928"
+            src="../assets/lyla-logo-300.png"
+            srcset="../assets/lyla-logo-300.png 300w, ../assets/lyla-logo-600.png 600w"
+            sizes="(min-width:760px) 226px, 226px" alt="Bar Lyla">
+        </picture>
+      </h2>
+      <div>
+        <p class="label">Opening October</p>
+        <p>A two-minute walk away on Scarborough Beach Road, in the old La Madonna Nera
+        space. Drinks first, small plates, about fifteen wines by the glass. From Sofika
+        Boulton and Jess Blyth.</p>
+        <a href="https://www.instagram.com/bar.lyla/" rel="noopener">@bar.lyla</a>
+      </div>
     </div>
 
     <div class="awards">
