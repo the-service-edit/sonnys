@@ -160,16 +160,15 @@ not Sonny's).
 Not added to the JSON-LD. A second business inside Sonny's `Restaurant` graph muddies
 which business the page is about. It stays visible content only.
 
-**The neon: size, not encoding.** It first ran in a 248px column and read as a flat red
-smear. The file was faithful (rendered R max 118 against 120 in the source, identical
-deep-black coverage) but at that size the glow filled the frame and the black field had
-nowhere to go. The image column is now `1.2fr`, roughly 620px on a wide screen, and the
-black reads as a dark room again.
+**The neon photograph was cut.** It ran briefly in a two-column version of this block.
+It is an out-of-focus mood shot: it tells a reader nothing they cannot get from the three
+lines of copy, and at any size small enough to belong in a footer the glow filled the
+frame and the black had nowhere to go. The block is now type only, which also makes it
+read consistently with the awards row directly beneath it.
 
-Encoding is deliberate: **4:4:4 chroma, quality 92 JPEG / 90 WebP.** Saturated red on
-black is the exact case 4:2:0 subsampling destroys, and the glow is one long smooth
-gradient, which is what low quality bands. It costs nothing here because the frame is
-almost all black: the 1536 WebP is 22KB.
+If it ever goes back, the working files are in `_unused/` and the encoding that suited it
+was 4:4:4 chroma at q92 JPEG / q90 WebP. Saturated red on black is the case 4:2:0
+subsampling destroys, and a long smooth glow is what low quality bands.
 
 ## FOOTER WORDMARK — blue, on a ground that carries it
 
