@@ -372,7 +372,7 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
 /* A sibling venue, so it is a note in the footer rather than a section of its own. */
 .lyla{margin-top:clamp(40px,5vw,58px);padding-top:28px;border-top:1px solid var(--rule);display:grid;gap:20px}
 @media(min-width:760px){
-  .lyla{grid-template-columns:minmax(0,248px) minmax(0,1fr);gap:clamp(24px,3vw,40px);align-items:center}
+  .lyla{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(26px,3.2vw,44px);align-items:center}
 }
 .lyla__ph{overflow:hidden;background:#0A0A0C;aspect-ratio:3/2}
 .lyla__ph img{width:100%;height:100%;object-fit:cover}
@@ -731,10 +731,12 @@ figure figcaption{margin-top:12px;font-size:11px;letter-spacing:.13em;text-trans
     <div class="lyla">
       <div class="lyla__ph">
         <picture>
-          <source type="image/webp" srcset="assets/lyla-520.webp 520w, assets/lyla-900.webp 900w" sizes="(min-width:760px) 248px, 92vw">
+          <source type="image/webp" srcset="assets/lyla-620.webp 620w, assets/lyla-1024.webp 1024w, assets/lyla-1536.webp 1536w"
+            sizes="(min-width:1320px) 620px, (min-width:760px) 48vw, 92vw">
           <img loading="lazy" decoding="async" width="1536" height="1024"
-            src="assets/lyla-520.jpg" srcset="assets/lyla-520.jpg 520w, assets/lyla-900.jpg 900w"
-            sizes="(min-width:760px) 248px, 92vw"
+            src="assets/lyla-1024.jpg"
+            srcset="assets/lyla-620.jpg 620w, assets/lyla-1024.jpg 1024w, assets/lyla-1536.jpg 1536w"
+            sizes="(min-width:1320px) 620px, (min-width:760px) 48vw, 92vw"
             alt="A red neon sign reading Bar Lyla, photographed out of focus against a black wall.">
         </picture>
       </div>
