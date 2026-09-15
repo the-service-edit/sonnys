@@ -104,6 +104,73 @@ Their Instagram bio says **"wed & thurs 4 - late / fri sat & sun 12 - late"**. T
 uses the Contact page version (Wed–Thu 4–10pm, Fri–Sat 12–late, Sun 12–9pm). Sunday is
 the real conflict: 9pm on the site, "late" on Instagram. Add it to the list below.
 
+## ⚠ OWNERSHIP — RESOLVE THIS ONE FIRST
+
+The page says *"Head chef and owner Sofika Boulton"*. That came from you, not from
+research, and two Broadsheet articles now say otherwise:
+
+- The Bar Lyla piece describes Boulton as **"Head Chef at Sonny's"** and Jess Blyth as
+  **"co-owner"** of Sonny's. Boulton is called an owner of *Bar Lyla*, not of Sonny's.
+- The original Sonny's launch piece names **Jessica Blyth** as the person who conceived
+  and drives the venue. It does not name Boulton at all (the opening chef was Aaron Read).
+
+So the likely position is: **Blyth is the owner, Boulton is the head chef.** Getting this
+wrong in a pitch is the worst error on the page, worse than any price or opening hour.
+
+Three options:
+
+1. **Safest, defensible under either reading:** change it to "Head chef Sofika Boulton
+   runs the kitchen." True whether or not she also holds equity.
+2. Keep "and owner" only if Sonny's confirm it directly. She may well have bought in
+   since those articles.
+3. If Blyth is the owner and that matters to the story, credit both.
+
+**I have not changed it**, because you stated it as fact and you may know something the
+press does not. But it is on the page and in the JSON-LD `employee.jobTitle`, so it needs
+your answer before this goes in front of anyone.
+
+## BAR LYLA — the new venue, in the footer
+
+Every fact on the page is from Broadsheet, not written by me:
+
+| On the page | Source |
+|---|---|
+| Bar Lyla | Broadsheet, both articles |
+| Opening October | "Opening in October 2026" |
+| Two-minute walk away, Scarborough Beach Road | "a two-minute walk from Sonny's"; address given as 1/155 Scarborough Beach Road |
+| Old La Madonna Nera space | "the former La Madonna Nera space" |
+| Drinks first, small plates, about fifteen wines by the glass | "It's drinks first, and the food's going to be the kind of food that goes well with drinks"; ~15 rotating wines by glass/bottle |
+| From Sofika Boulton and Jess Blyth | Both named as Bar Lyla owners |
+| @bar.lyla | Handle given in the article |
+
+Deliberately left off: the "more feminine energy than Sonny's" quote (Boulton's words
+about Bar Lyla, not Sonny's to publish on their site), the hibashi grill (detail without
+a job on a footer note), and the unit number in the address (their site should carry it,
+not Sonny's).
+
+**Two things to watch:**
+
+- **The suburb is disputed.** The article body says Mount Hawthorn; its own headline says
+  North Perth. The page avoids the suburb and names the street, which is true either way.
+  Confirm before adding one.
+- **"Opening October" goes stale in weeks.** After they open, it becomes "now open" or the
+  block comes out. Put a reminder in the calendar; a stale "opening soon" is worse than no
+  mention at all.
+
+Not added to the JSON-LD. A second business inside Sonny's `Restaurant` graph muddies
+which business the page is about. It stays visible content only.
+
+## FOOTER WORDMARK — blue, on a ground that carries it
+
+You asked for the footer wordmark in the brand blue. Straight onto the footer, `#223E99`
+on `#14161A` measures **1.91:1** — under the 3:1 minimum for non-text graphics, and it
+turns to mud on a dimmed phone or in daylight.
+
+It now sits on a bone plaque: **7.76:1**, and blue-on-light is how the real sign on the
+stone and the favicon both work. `see footer-logo-compare.png` for the two side by side.
+If you would rather it sat bare on the dark, the token is `.ftr__brand` and removing the
+background is a one-line change, but I would not ship it.
+
 ## CONFIRM BEFORE LAUNCH
 
 These came from third-party sources (WA Good Food Guide, Broadsheet), not from the
@@ -111,7 +178,7 @@ venue. Every one is on the page — get a yes from Sonny's before it goes live.
 
 | # | Claim on the page | Source | Action |
 |---|---|---|---|
-| 2 | **Sofika Boulton, head chef and owner** | You told me the owner part; my sources only had "head chef" | Confirm the ownership before this is public — it's on the page and in the schema |
+| 2 | **Sofika Boulton, head chef and owner** | You told me the owner part. **Two published sources now contradict it** | See the section immediately below. Resolve before this is shown to anyone |
 | 3 | Wheelchair accessible | WAGFG listing | Confirm |
 | 4 | Dog friendly outside, bowls at the door | WAGFG listing | Confirm |
 | 5 | Outdoor seating out front | Photo + WAGFG | Confirm |
