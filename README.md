@@ -15,50 +15,6 @@ together and it runs anywhere — GitHub Pages, Netlify, a folder on a desktop.
 
 ---
 
-## VERSIONS
-
-Two live variants of the **current** site, differing only in the Bar Lyla footer block.
-
-| | URL | Bar Lyla block |
-|---|---|---|
-| **v1** | `/sonnys/v1/` | Blue Sonny's wordmark on a small bone plaque, Bar Lyla as a type block |
-| **v2** | `/sonnys/v2/` | Full-bleed bone band with both marks side by side in their real colours, "Opening soon" under Bar Lyla. No Bar Lyla body copy |
-
-- **The root redirects to v2** (`meta refresh` + `location.replace`, with a visible link as
-  fallback). `/sonnys/` is still the link to hand anyone; it lands on v2.
-- **v1 is `noindex` and disallowed in `robots.txt`.** Two near-identical pages competing in
-  search costs more than the comparison is worth. v2 is the indexable one.
-- Both share one copy of `assets/` and `fonts/`; their paths point up one level.
-- **The original pre-redesign build has been retired** from the live site. It used to sit at
-  `/v1/`. It is still in git history (commit `9c8a4cc`, file `v1/index.html`) and a copy is
-  in `_unused/original-index.html` if you ever want the before-and-after again.
-
-### The venue band (v2)
-
-Full-bleed bone strip at the top of the footer carrying both marks at their real colours:
-Sonny's blue `#223E99` and Bar Lyla burgundy `#6F021E`. Neither survives on the dark
-ground (1.91:1 and 1.47:1); on bone they are 7.76:1 and 10.10:1.
-
-- The band is `--bone`, the site's warm white, not `#FFF`. Pure white would be a cold
-  rectangle in a warm dark page. One token if you want it changed.
-- **"OPENING SOON" is positioned out of flow.** In flow it dragged the Sonny's wordmark
-  down, because the flex row was centring on the Bar Lyla block including its label rather
-  than on the mark. Absolute, so the two marks centre on each other.
-- `#5E5B57` on bone is 5.53:1.
-- **The Bar Lyla mark links to @bar.lyla.** The body copy came out, so the logo carries
-  the route. The venue name is still in the accessibility tree as the image's `alt`.
-- Sonny's 148–196px wide, Bar Lyla 112–150px. Both fit side by side down to 360px.
-- **"Opening soon" rather than "Opening October"** kills the staleness problem. It stays
-  true until the day they open, and then the band just loses the label.
-
-### The Bar Lyla mark
-
-`assets/lyla-logo-300|600.png|webp`, transparent PNG trimmed to its bounding box, WebP
-with alpha alongside it. The mark is `#6F021E`.
-
-**Still raster.** Ask Bar Lyla for the vector. At 150px on a 2x screen the 600px PNG is
-fine, but an SVG would be smaller than the 17KB WebP and sharp at any size.
-
 ## ⚠ PRICE CONFLICT — RESOLVE FIRST
 
 The printed menu you sent says **THREE COURSE CHEFS SELECTION / 75pp**.
@@ -155,57 +111,27 @@ Three options:
 press does not. But it is on the page and in the JSON-LD `employee.jobTitle`, so it needs
 your answer before this goes in front of anyone.
 
-## BAR LYLA — the new venue, in the footer
+## PARKED — the Bar Lyla work
 
-Every fact on the page is from Broadsheet, not written by me:
+Reverted on 15 Sep 2026 back to the pre-Bar-Lyla build. Nothing about the sibling venue
+is on the site. What was built and taken off, in case any of it is wanted later:
 
-| On the page | Source |
-|---|---|
-| Bar Lyla | Broadsheet, both articles |
-| Opening October | "Opening in October 2026" |
-| Two-minute walk away, Scarborough Beach Road | "a two-minute walk from Sonny's"; address given as 1/155 Scarborough Beach Road |
-| Old La Madonna Nera space | "the former La Madonna Nera space" |
-| Drinks first, small plates, about fifteen wines by the glass | "It's drinks first, and the food's going to be the kind of food that goes well with drinks"; ~15 rotating wines by glass/bottle |
-| From Sofika Boulton and Jess Blyth | Both named as Bar Lyla owners |
-| @bar.lyla | Handle given in the article |
+- A footer note with the venue's details, all sourced from Broadsheet
+  (`instagram.com/p/…`, the Bar Lyla article): opening October 2026, two-minute walk on
+  Scarborough Beach Road, the old La Madonna Nera space, drinks first, about fifteen wines
+  by the glass, from Sofika Boulton and Jess Blyth, `@bar.lyla`.
+- An out-of-focus neon photograph, cut for being a mood shot that said nothing.
+- A full-bleed bone band carrying the Sonny's and Bar Lyla marks side by side with
+  "Opening soon". Both logos need a light ground: Sonny's blue is 1.91:1 on the dark
+  footer, Bar Lyla burgundy 1.47:1; on bone they are 7.76:1 and 10.10:1.
+- A `/v1/` and `/v2/` split to compare the two treatments, plus a root redirect.
 
-Deliberately left off: the "more feminine energy than Sonny's" quote (Boulton's words
-about Bar Lyla, not Sonny's to publish on their site), the hibashi grill (detail without
-a job on a footer note), and the unit number in the address (their site should carry it,
-not Sonny's).
+All of it is in git between `8bf62af` and `1637520`. The built files and the Bar Lyla
+logo are in `_unused/lyla-experiment/`. The site is a single `index.html` at the root
+again, and `robots.txt` no longer disallows anything.
 
-**Two things to watch:**
-
-- **The suburb is disputed.** The article body says Mount Hawthorn; its own headline says
-  North Perth. The page avoids the suburb and names the street, which is true either way.
-  Confirm before adding one.
-- **"Opening October" goes stale in weeks.** After they open, it becomes "now open" or the
-  block comes out. Put a reminder in the calendar; a stale "opening soon" is worse than no
-  mention at all.
-
-Not added to the JSON-LD. A second business inside Sonny's `Restaurant` graph muddies
-which business the page is about. It stays visible content only.
-
-**The neon photograph was cut.** It ran briefly in a two-column version of this block.
-It is an out-of-focus mood shot: it tells a reader nothing they cannot get from the three
-lines of copy, and at any size small enough to belong in a footer the glow filled the
-frame and the black had nowhere to go. The block is now type only, which also makes it
-read consistently with the awards row directly beneath it.
-
-If it ever goes back, the working files are in `_unused/` and the encoding that suited it
-was 4:4:4 chroma at q92 JPEG / q90 WebP. Saturated red on black is the case 4:2:0
-subsampling destroys, and a long smooth glow is what low quality bands.
-
-## FOOTER WORDMARK — blue, on a ground that carries it
-
-You asked for the footer wordmark in the brand blue. Straight onto the footer, `#223E99`
-on `#14161A` measures **1.91:1** — under the 3:1 minimum for non-text graphics, and it
-turns to mud on a dimmed phone or in daylight.
-
-It now sits on a bone plaque: **7.76:1**, and blue-on-light is how the real sign on the
-stone and the favicon both work. `see footer-logo-compare.png` for the two side by side.
-If you would rather it sat bare on the dark, the token is `.ftr__brand` and removing the
-background is a one-line change, but I would not ship it.
+**If it comes back, the facts above still need Sonny's confirmation** — they are press
+reporting, not the client's own words.
 
 ## CONFIRM BEFORE LAUNCH
 
@@ -423,6 +349,10 @@ decision, one route. The glass blur that was on the second button is gone.
 
 The Chef's Selection panel that also used `--radius` has been removed — it read as
 something you were meant to click. It is now an ordinary menu row.
+
+The footer wordmark is **bone**, not brand blue. Blue on that ground measures 1.91:1,
+under the 3:1 floor for non-text graphics, so it would need a light plaque to work. See
+the note below on what was tried.
 
 ## TYPE — Anybody
 
